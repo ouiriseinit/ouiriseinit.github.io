@@ -1,7 +1,7 @@
 :root {
     --bg: #050505;
     --bg-panel: #111111;
-    --color: rgba(255, 255, 255, 0.5);
+    --color: rgba(255, 255, 255, 0.8);
     --border: rgba(255, 255, 255, 0.1);
     --hover: #ffffff;
     --accent: #0070f3; /* Subtle blue for focus states */
