@@ -120,6 +120,6 @@ app.get('/api/users/latest', (req, res) => {
 })
 // Start the server
 app.listen(PORT, () => {
-    testConnection()
+    // testConnection()
     console.log(`Server is running on port ${PORT}`);
 });

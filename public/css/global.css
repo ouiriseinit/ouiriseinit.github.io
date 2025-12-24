@@ -129,7 +129,7 @@ button:active, input[type="submit"]:active {
 }
 
 /* Form Styling */
-.contact.hidden {
+.hidden {
     display: none;
 }
 
