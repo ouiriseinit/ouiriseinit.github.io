@@ -1,0 +1,202 @@
+:root {
+    --bg: #050505;
+    --bg-panel: #111111;
+    --color: rgba(255, 255, 255, 0.5);
+    --border: rgba(255, 255, 255, 0.1);
+    --hover: #ffffff;
+    --accent: #0070f3; /* Subtle blue for focus states */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--color);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Layout Containers */
+header, main, footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding-top: 4rem;
+    min-height: 80vh;
+}
+
+/* Typography */
+h1, h2 {
+    color: var(--hover);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+h1.header-title {
+    font-size: 1.2rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Sections & Cards */
+section.bio, .links, form {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+ul {
+    list-style: none;
+}
+
+.services li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    width: fit-content;
+    font-size: 0.95rem;
+}
+
+.links h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--color);
+    margin-bottom: 1.5rem;
+}
+
+.links li {
+    margin-bottom: 0.8rem;
+}
+
+ a {
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 1.1rem;
+    color: var(--color);
+}
+
+/* Interaction States */
+a:hover {
+    color: var(--hover);
+    padding-left: 5px;
+}
+
+button, input[type="submit"] {
+    cursor: pointer;
+    background: transparent;
+    background: var(--bg-panel);
+    color: var(--bg);
+    padding: 1rem 3rem;
+    border-radius: 4px;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border: none;
+    color: var(--hover);
+    border: 1px solid var(--border);
+}
+
+button:hover, input[type="submit"]:hover {
+    border: var(--border);
+    
+}
+button:active, input[type="submit"]:active {
+    border: 1px solid var(--border);
+}
+
+/* Form Styling */
+.contact.hidden {
+    display: none;
+}
+
+form {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    padding: 3rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+input[type="text"], 
+textarea {
+    background: #1a1a1a;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem;
+    color: white;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color);
+    background: #222;
+}
+
+input[type="submit"] {
+    border: none;
+    padding: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+
+/* Footer */
+footer {
+    margin-top: 5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    header, main, footer { padding: 1.5rem; }
+    h2 { font-size: 1.5rem; }
+    form { padding: 1.5rem; }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="css/global.css">
+    <script src="js/contact.js" defer></script>
+</head>
+<body>
+<header>
+  <!-- site icon -->
+  <h1 class="header-title">OUIRISE INTIATIVE</h1>
+  <nav class="socials">
+    <button id="contact-button">contact</button>
+  </nav>
+</header>
+
+<!-- Main Content -->
+<main>
+  <section class="bio">
+    <h2>OK@OUIRISEINTIATIVE</h2>
+  
+    <p>Creative intelligent code.</p>
+    <!-- <a class="action">Schedule Appointment</a> -->
+    <!-- Add more content here as needed -->
+     <ul class="services">
+        <li>custom small business web</li>
+        <li>enterprise software solutions</li>
+        <li>service based maintenance pricing</li>
+        <li>cloud-based security</li>
+        <li>content writing</li>
+    </ul>
+  </section>
+<form class="contact column hidden" id="form" action="/api/submit" method="POST">
+    <h2>Contact</h2>
+    <label>
+        name
+        <input type="text" name="username" />
+    </label>
+    <label>
+        email
+        <input type="text" name="email" />
+    </label>
+    <label>
+        phone number
+        <input type="text" name="phone" />
+    </label>
+    <label>
+        leave a message
+        <textarea name="message"></textarea>
+    </label>
+    <input type="submit" value="send message" />
+</form>
+  <ul class="links">
+    <h2>Links</h2>
+    <li><a href="">(123) 456 - 7890</a></li>
+    <li><a href="">ouirise@mail.com</a></li>
+    <li><a href="">543 United Way, City, State, 35534</a></li>
+    <!-- <li><a href="">@spotify</a></li> -->
+     <!-- create new lead -->
+  
+    
+    <li><a href="" id="instagram">@instagram</a></li>
+    <li><a href="" id="tiktok">@tiktok</a></li>
+    <li><a href="">@facebook</a></li>
+    <li><a href="">@x</a></li>
+    </ul>
+</main>
+
+
+
+<!-- Footer -->
+<footer>
+  <p class="copyright">EULA <span>This source code can be republished, reutilized, revoked or otherwise modified by the creator of OuiRise Initiative.</span></p>
+</footer>
+</body>
+</html>
