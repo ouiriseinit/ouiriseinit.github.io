@@ -8,7 +8,7 @@ require('dotenv').config()
 const app = express();
 
 // --- CONFIGURATION ---
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // --- MIDDLEWARE ---
 app.use(cors());
@@ -43,7 +43,7 @@ app.post('/api/send', async (req, res) => {
     const { name, email, phone, message } = req.body;
     // Extract the user data from req.body and create a new User instance
     const newUser = new User({ name, email, phone });
-    
+
     let found = await User.findOne(newUser);
      // Save the new user to the database only if not found
     if (!found) await newUser.save();
