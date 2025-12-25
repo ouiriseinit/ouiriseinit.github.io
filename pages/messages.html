@@ -248,8 +248,6 @@ footer {
   </form>
 </main>
 
-
-
 <!-- Footer -->
 <footer>
   <p class="copyright">EULA <span>This source code can be republished, reutilized, revoked or otherwise modified by the creator of OuiRise Initiative.</span></p>
@@ -257,22 +255,21 @@ footer {
 </body>
 <script>
   window.addEventListener('load', function() {
-    fetch('/api/users')
+    fetch('/api/messages')
       .then(response => response.json())
       .then(result => {
         console.log(result);
         const usersSection = document.getElementById('users');
-        usersSection.innerHTML = '<h2>Users</h2>'; // Clear existing content and add header
-        result.forEach(user => {
-          const userCard = document.createElement('div');
-          userCard.classList.add('user-card');
-          userCard.innerHTML = `
-            <h3>${user.name}</h3>
-            <p>Email: ${user.email}</p>
-            <p>Phone: ${user.phone}</p>
-            <a href="/api/user/${user._id}/delete">Delete User</a>
+        usersSection.innerHTML = '<h2>Messages</h2>'; // Clear existing content and add header
+        result.forEach(message => {
+          const messageCard = document.createElement('div');
+          messageCard.classList.add('message-card');
+          messageCard.innerHTML = `
+            <h3>${message.name}</h3>
+            <p>Message: ${message.message}</p>
+            <a href="/api/message/${message._id}/delete">Delete Message</a>
           `;
-          usersSection.appendChild(userCard);
+          usersSection.appendChild(messageCard);
         });
       })
       const contactButton = document.getElementById('contact-button');

@@ -37,19 +37,30 @@ const Message = mongoose.model('Message', messageSchema);
 const User = mongoose.model('User', userSchema)
 
 // --- API ROUTES ---
-app.post('/api/submit', async (req, res) => {
-    console.log(req.body)
-});
 
 app.post('/api/send', async (req, res) => {
-    console.log(req.body)
+    try {
+    const { name, email, phone, message } = req.body;
+    // Extract the user data from req.body and create a new User instance
+    const newUser = new User({ name, email, phone });
 
-    let newUser = User.findOne({ phone: req.body.phone });
-    if (!newUser && newUser !== User.findOne({ phone: req.body.phone })) {
-        newUser = new User(req.body);
-        await newUser.save();
+    // Save the new user to the database
+    await newUser.save();
+
+    const found = await User.findOne(newUser);
+    if (found) {
+        const newMessage = new Message({ name, user_id: found._id, message });
+        await newMessage.save();
+        res.redirect('/')
+        //res.status(201).json({ message: 'User created successfully', userId: newUser.id });
     }
-    res.redirect('/api/users');
+    // Send success response
+    
+  } catch (error) {
+    console.error('Error creating user:', error);
+    // Send error response
+    res.status(500).json({ error: 'Failed to create user' });
+  }
 })
 
 app.get('/api/users', async (req, res) => {
@@ -57,6 +68,34 @@ app.get('/api/users', async (req, res) => {
     console.log(result)
     res.json(result);
 });
+app.get('/api/user/:id', async (req, res) => {
+    const userId = req.params.id;
+    const user = await User.findById(userId);
+    res.json(user);
+})
+app.get('/api/user/:id/delete', async (req, res) => {
+    const userId = req.params.id;
+    await User.findByIdAndDelete(userId);
+    res.redirect('/users');
+})
+
+app.get('/api/messages', async (req, res) => {
+    const result = await Message.find({});
+    res.json(result);
+})
+
+app.get('/api/message/:id', async (req, res) => {
+    const messageId = req.params.id;
+    const message = await Message.findById(messageId);
+    res.json(message);
+})
+app.get('/api/message/:id/delete', async (req, res) => {
+    const messageId = req.params.id;
+    await Message.findByIdAndDelete(messageId);
+    res.redirect('/');
+})
+
+// DB ADMIN ROUTES
 app.get('/api/db/load', async (req, res) => {
     const users = require('./data/users.json');
     users.map(async (user) => {
@@ -67,6 +106,7 @@ app.get('/api/db/load', async (req, res) => {
 })
 app.get('/api/db/clear', async (req, res) => {
     await User.deleteMany({});
+    await Message.deleteMany({});
     res.redirect('/');
 })
 
@@ -77,6 +117,10 @@ app.get('/', (req, res) => {
 app.get('/users', ( req, res) => {
     res.sendFile(path.resolve(__dirname, 'pages/users.html'))
 })
+app.get('/messages', ( req, res) => {
+    res.sendFile(path.resolve(__dirname, 'pages/messages.html'))
+});
+
 
 // --- START SERVER ---
 app.listen(PORT, () => {
