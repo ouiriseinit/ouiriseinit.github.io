@@ -64,7 +64,7 @@ app.post('/api/send', async (req, res) => {
 })
 
 app.get('/', (req, res) => {
-    res.sendFile(`C:\\Users\\muham\\OneDrive\\Documents\\GitHub\\contact\\index.html`)
+    res.sendFile(path.resolve(__dirname, 'index.html'))
 })
 app.get('/api/users', async (req, res) => {
     try {
