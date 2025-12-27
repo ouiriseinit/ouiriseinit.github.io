@@ -42,10 +42,10 @@ const User = mongoose.model('User', userSchema)
 
 app.post('/api/send', async (req, res) => {
     try {
-    const { name, email, phone, content } = req.body;
+    const { name, email, phone, content, business } = req.body;
     let user_id = null;
     // Extract the user data from req.body and create a new User instance
-    const newUser = new User({ name, email, phone });
+    const newUser = new User({ name, email, phone, business });
 
     let found = await User.findOne({ email });
     if (!found) found = await User.findOne({ phone });
@@ -59,7 +59,7 @@ app.post('/api/send', async (req, res) => {
 
     if (user_id) {
         console.log('User ID:', user_id);
-        const newMessage = new Message({ name, user_id, content });
+        const newMessage = new Message({ name, user_id, content, business });
         await newMessage.save();
         res.redirect('https://ouiriseinit.github.io/')
     }
