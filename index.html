@@ -49,16 +49,18 @@
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            left: 0;
-            padding: 1rem 2rem;
+            height: fit-content;
+            padding: 1rem 10rem;
             background: rgba(5, 5, 5, 0.8);
             backdrop-filter: blur(10px);
             z-index: 100;
+
         }
 
         main {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 4rem;
             padding-top: 4rem;
             min-height: 80vh;
@@ -223,10 +225,33 @@
             margin: 1rem auto;
         }
 
+        .bio {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: var(--bg-panel);
+            border: var(--border);
+            padding: 1rem 0;
+            border-radius: 8px;
+        }
+        .bio div {
+            height: fit-content;
+            padding-top: 0;
+            position: relative;
+            bottom: 2rem;
+            text-align: center;
+        }
+        .bio div nav {
+            justify-content: center;
+        }
+
         .projects {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
+            justify-content: center;
         }
 
         .project-item {
@@ -253,10 +278,9 @@
         }
         
         section.portfolio h2 {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
             display: flex;
             flex-wrap: wrap;
+            margin-bottom: 2rem;
         }
 
         h2.contact-heading {
@@ -284,11 +308,21 @@
         }
 
         @media (max-width: 768px) {
+            body, main {
+                overflow-x: hidden;
+                position: relative;
+            }
+            header {
+                padding: 1rem 2rem;
+            }
+            section.bio * {
+                text-align: center;
+            }
             h2 { font-size: 1.5rem; }
             form { padding: 1.5rem; }
             main {
                 width: 90vw;
-                margin: auto;
+                padding-left: 0.25rem;
             }
             .projects {
                 flex-direction: column;
@@ -318,44 +352,21 @@
             <li>Cloud Database Management</li>
             <li>Full-Stack Deployment</li>
         </ul>
-
+        <div>
         <h2 id="contact-heading" class="contact-heading">Schedule a Consultation</h2>
         <ul class="links">
-        <li><a href="tel:+19804867595">(980) 486 - 7595</a></li>
         <li><a href="mailto:ouiriseinitiative@yahoo.com">ouiriseinitiative@yahoo.com</a></li>
+        <li><a href="tel:+19804867595">(980) 486 - 7595</a></li>
         <li></li>
         </ul>
 
         <nav>
             <button class="" id="contact-button">contact</button>
         </nav>
-        
-    </section>
-    <section class="portfolio">
-        <h2 class="portfolio-heading"><span>🎨 Bring your design or&nbsp;</span><span>start from a template ✨</span></h2>
-      
-        <div class="projects">
-            <div class="project-item"><a target="_blank" href="https://ouiriseinit.github.io/culturalgold">
-                    <h3>Cultural Gold</h3>
-                    <figure><img src="https://ouiriseinit.github.io/culturalgold/images/logo-alt-removebg-preview.png"/><figcaption>View</figcaption></figure>
-            </a></div>
-            <div class="project-item"><a target="_blank" href="https://ouiriseinit.github.io/thejugobar">
-                <h3>The Jugo Bar</h3>
-                <figure><img src="https://images.squarespace-cdn.com/content/v1/67cf71a48a9c4f3de71c1341/2c837587-2069-4276-8f98-348194451dcb/D7B8A19A-6683-498A-8F28-C5447229EDBE.png?format=1500w" alt="The Jugo Bar" /><figcaption>View</figcaption></figure>
-            </a></div>  
-            <div class="project-item"><a target="_blank" href="https://ouiriseinit.github.io/miyu/">
-                <h3>Miyu</h3>
-                <figure><img src="/images/miyu.png" alt="Miyu"/><figcaption>View</figcaption></figure>
-            </a></div>
-        <!-- Add more project items as needed -->
         </div>
     </section>
-
-    
-
-    
     <form class="contact column hidden" id="form" action="https://contact-eight-black.vercel.app/api/send" method="POST">
-      <h2>Project Request</h2>
+      <h2>&nbsp;</h2>
       <label>
           name
           <input type="text" name="name" />
@@ -374,6 +385,26 @@
       </label>
       <input type="submit" value="send message" />
     </form>
+    <section class="portfolio">
+        <h2 class="portfolio-heading"><span>🎨 Bring your design or&nbsp;</span><span>start from a template ✨</span></h2>
+      
+        <div class="projects">
+            <div class="project-item"><a target="_blank" href="https://ouiriseinit.github.io/culturalgold">
+                    <h3>Cultural Gold</h3>
+                    <figure><img src="https://ouiriseinit.github.io/culturalgold/images/logo-alt-removebg-preview.png"/><figcaption>View</figcaption></figure>
+            </a></div>
+            <div class="project-item"><a target="_blank" href="https://ouiriseinit.github.io/miyu/">
+                <h3>Miyu</h3>
+                <figure><img src="/images/miyu.png" alt="Miyu"/><figcaption>View</figcaption></figure>
+            </a></div>
+            <div class="project-item"><a target="_blank" href="https://ouiriseinit.github.io/thejugobar">
+                <h3>The Jugo Bar</h3>
+                <figure><img src="https://images.squarespace-cdn.com/content/v1/67cf71a48a9c4f3de71c1341/2c837587-2069-4276-8f98-348194451dcb/D7B8A19A-6683-498A-8F28-C5447229EDBE.png?format=1500w" alt="The Jugo Bar" /><figcaption>View</figcaption></figure>
+            </a></div>  
+            
+        <!-- Add more project items as needed -->
+        </div>
+    </section>
 </main>
 
 
