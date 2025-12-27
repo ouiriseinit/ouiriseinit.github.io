@@ -61,7 +61,7 @@ app.post('/api/send', async (req, res) => {
         console.log('User ID:', user_id);
         const newMessage = new Message({ name, user_id, content });
         await newMessage.save();
-        res.redirect('back')
+        res.redirect('/')
     }
     else res.send('user not created')
   } catch (error) {
