@@ -61,13 +61,14 @@ app.post('/api/send', async (req, res) => {
         console.log('User ID:', user_id);
         const newMessage = new Message({ name, user_id, content });
         await newMessage.save();
-        res.redirect('/')
+        res.redirect('https://ouiriseinit.github.io/')
     }
     else res.send('user not created')
   } catch (error) {
     console.error('Error creating user:', error);
     // Send error response
-    res.status(500).json({ error: 'Failed to ping database' });
+    // res.status(500).json({ error: 'Failed to ping database' });
+    res.redirect('https://ouiriseinit.github.io/')
   }
 })
 
@@ -102,7 +103,7 @@ app.get('/api/message/:id', async (req, res) => {
 app.get('/api/message/:id/delete', async (req, res) => {
     const messageId = req.params.id;
     await Message.findByIdAndDelete(messageId);
-    res.redirect('/');
+    res.redirect('https://ouiriseinit.github.io/');
 })
 app.get('/api/user/:id/messages', async (req, res) => {
     const userId = req.params.id;
@@ -117,7 +118,7 @@ app.get('/api/db/load', async (req, res) => {
         const newUser = new User(user);
         await newUser.save();
     })
-    res.redirect('/');
+    res.redirect('https://ouiriseinit.github.io/');
 })
 app.get('/api/db/clear', async (req, res) => {
     await User.deleteMany({});
