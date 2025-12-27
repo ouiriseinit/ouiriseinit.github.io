@@ -124,7 +124,7 @@
             background: transparent;
             background: var(--bg-panel);
             color: var(--bg);
-            padding: 1rem 3rem;
+            padding: 1rem 4rem;
             border-radius: 4px;
             transition: var(--transition);
             font-size: 0.9rem;
@@ -133,7 +133,6 @@
             color: var(--hover);
             border: 1px solid var(--border);
         }
-
         button:hover, input[type="submit"]:hover {
             border: var(--border);
             
@@ -214,7 +213,10 @@
         nav {
             display: flex;
             gap: 1.5rem;
-            align-items: center;}
+            align-items: center;
+            width: 100%;
+            margin: 1rem 0;
+        }
 
         main > * {
             width: 76vw;
@@ -257,15 +259,19 @@
             flex-wrap: wrap;
         }
 
-        h2#contact-heading {
+        h2.contact-heading {
             margin-top: 3rem;
         }
-        #contact-heading:hover, a:hover {
+        h2.contact-heading:hover, a:hover {
             cursor: pointer;
             color: var(--hover);
             text-decoration: underline;
         }
 
+        h2.portfolio-heading {
+            justify-content: center;
+            text-align: center;
+        }
         main {
             display: flex;
             flex-direction: column;
@@ -297,17 +303,15 @@
 <body>
 <header>
   <!-- site icon -->
-  <h1 class="header-title">OuiRise Initiative</h1>
-  <nav>
-    <button class="" id="contact-button">contact</button>
-  </nav>
+  <h1 class="header-title">Ouirise Initiative</h1>
+  
 </header>
 
 <!-- Main Content -->
 <main>
     <section class="bio">
         <ul class="services">
-            <h2>Utilize OuiRise to Launch Your Vision 🚀</h2>
+            <h2>Launch Your Vision 🚀</h2>
             <li>Website Design and Development</li>
             <li>SEO Optimization</li>
             <li>Content Writing</li>
@@ -315,17 +319,20 @@
             <li>Full-Stack Deployment</li>
         </ul>
 
-        
-        <h2 id="contact-heading">Schedule a Consultation</h2>
+        <h2 id="contact-heading" class="contact-heading">Schedule a Consultation</h2>
         <ul class="links">
         <li><a href="tel:+19804867595">(980) 486 - 7595</a></li>
         <li><a href="mailto:ouiriseinitiative@yahoo.com">ouiriseinitiative@yahoo.com</a></li>
         <li></li>
         </ul>
+
+        <nav>
+            <button class="" id="contact-button">contact</button>
+        </nav>
         
     </section>
     <section class="portfolio">
-        <h2><span>🎨✨Bring your design or&nbsp;</span><span>start from a template ✨🎨</span></h2>
+        <h2 class="portfolio-heading"><span>🎨 Bring your design or&nbsp;</span><span>start from a template ✨</span></h2>
       
         <div class="projects">
             <div class="project-item"><a target="_blank" href="https://ouiriseinit.github.io/culturalgold">
@@ -343,6 +350,8 @@
         <!-- Add more project items as needed -->
         </div>
     </section>
+
+    
 
     
     <form class="contact column hidden" id="form" action="https://contact-eight-black.vercel.app/api/send" method="POST">
@@ -371,7 +380,7 @@
 
 <!-- Footer -->
  <footer>
-    <p>&copy; 2025 ouirise initiative</p>
+    <p>&copy; 2025 Ouirise Initiative</p>
  </footer>
 </body>
 <script>
