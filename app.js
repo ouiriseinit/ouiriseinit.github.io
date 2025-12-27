@@ -26,13 +26,15 @@ const messageSchema = new mongoose.Schema({
     name: { type: String, required: true },
     user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     content: { type: String, required: true },
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
+    business: { type: String, required: false}
 });
 const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     phone: { type: String, required: false },
     email: { type: String, required: false },
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
+    business: { type: String, required: false }
 })
 
 const Message = mongoose.model('Message', messageSchema);
