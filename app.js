@@ -66,16 +66,19 @@ app.get('/api/send', async (req, res) => {
     try {
     const { name, email, phone, message } = req.body;
     // Extract the user data from req.body and create a new User instance
-    const newUser = new User({ name, email, phone });
+    let found = User.findOne({ name, email, phone })
+    if (!found) {
+        found = new User({ name, email, phone });
 
-    // Save the new user to the database
-    await newUser.save();
+        // Save the new user to the database
+        await found.save();
+    }
 
-    const found = await User.findOne(newUser);
+    found = await User.findOne(newUser);
     if (found) {
         const newMessage = new Message({ name, user_id: found._id, message });
         await newMessage.save();
-        res.redirect('https://ouiriseinit.github.io/')
+        res.redirect('/')
         //res.status(201).json({ message: 'User created successfully', userId: newUser.id });
     }
     // Send success response
@@ -136,8 +139,7 @@ app.get('/api/db/clear', async (req, res) => {
 
 // --- VIEW ROUTES ---
 app.get('/', (req, res) => {
-    //res.sendFile(path.resolve(__dirname, 'index.html'))
-    res.redirect('http://ouiriseinit.github.io/')
+    res.sendFile(path.resolve(__dirname, 'index.html'))
 })
 app.get('/users', ( req, res) => {
     res.sendFile(path.resolve(__dirname, 'pages/users.html'))
