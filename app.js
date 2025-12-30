@@ -65,29 +65,30 @@ app.post('/api/send', async (req, res) => {
 })
 app.get('/api/send', async (req, res) => {
     try {
-    const { name, email, phone, message, business } = req.body;
+    //const { name, email, phone, message, business } = req.body;
+    console.log(req.body)
     // Extract the user data from req.body and create a new User instance
-    let found = User.findOne({ name, email, phone, business })
-    if (!found) {
-        found = new User({ name, email, phone, business });
+//     let found = User.findOne({ name, email, phone, business })
+//     if (!found) {
+//         found = new User({ name, email, phone, business });
 
-        // Save the new user to the database
-        await found.save();
-    }
-    found = await User.findOne(newUser);
-    if (found) {
-        const newMessage = new Message({ name, user_id: found._id, message, business });
-        await newMessage.save();
-        res.redirect('/')
-        //res.status(201).json({ message: 'User created successfully', userId: newUser.id });
-    }
-    // Send success response
+//         // Save the new user to the database
+//         await found.save();
+//     }
+//     found = await User.findOne(newUser);
+//     if (found) {
+//         const newMessage = new Message({ name, user_id: found._id, message, business });
+//         await newMessage.save();
+//         res.redirect('/')
+//         //res.status(201).json({ message: 'User created successfully', userId: newUser.id });
+//     }
+//     // Send success response
     
-  } catch (error) {
-    console.error('Error creating user:', error);
-    // Send error response
-    res.status(500).json({ error: 'Failed to create user' });
-  }
+//   } catch (error) {
+//     console.error('Error creating user:', error);
+//     // Send error response
+//     res.status(500).json({ error: 'Failed to create user' });
+//   }
 })
 
 app.get('/api/users', async (req, res) => {
