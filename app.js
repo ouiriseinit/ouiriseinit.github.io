@@ -26,12 +26,14 @@ const messageSchema = new mongoose.Schema({
     name: { type: String, required: true },
     user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     content: { type: String, required: true },
+    business: { type: String },
     date: { type: Date, default: Date.now }
 });
 const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     phone: { type: String, required: false },
     email: { type: String, required: false },
+    business: { type: String },
     date: { type: Date, default: Date.now }
 })
 
@@ -39,7 +41,9 @@ const Message = mongoose.model('Message', messageSchema);
 const User = mongoose.model('User', userSchema)
 
 // --- API ROUTES ---
-
+app.get('/api/send', (req, res) => {
+    res.redirect("/")
+})
 app.post('/api/send', async (req, res) => {
     try {
     const { name, email, phone, content } = req.body;
