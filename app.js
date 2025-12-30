@@ -128,7 +128,7 @@ app.get('/api/db/clear', async (req, res) => {
 
 // --- VIEW ROUTES ---
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'index.html'))
+    res.redirect('https://ouiriseinit.github.io/')
 })
 app.get('/users', ( req, res) => {
     res.sendFile(path.resolve(__dirname, 'pages/users.html'))
