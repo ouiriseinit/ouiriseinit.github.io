@@ -41,7 +41,7 @@ const User = mongoose.model('User', userSchema)
 
 app.post('/api/send', async (req, res) => {
     try {
-    const { name, email, phone, message } = req.body;
+    const { name, email, phone, message } = req.body[0];
     // Extract the user data from req.body and create a new User instance
     const newUser = new User({ name, email, phone, business });
 
@@ -64,8 +64,10 @@ app.post('/api/send', async (req, res) => {
   }
 })
 app.get('/api/send', async (req, res) => {
+    if (req.body) {
     console.log(req.body)
     const { name, email, phone, message } = req.body;
+    }
     try {
     
     // Extract the user data from req.body and create a new User instance
