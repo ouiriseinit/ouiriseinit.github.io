@@ -227,7 +227,6 @@
 
         .bio {
             display: flex;
-            justify-content: center;
             align-items: center;
             flex-wrap: wrap;
             background: var(--bg-panel);
@@ -238,10 +237,12 @@
         }
         .bio div {
             height: fit-content;
-           
             position: relative;
             text-align: center;
             
+        }
+        bio .links {
+            border: solid red 1px;
         }
         .bio div nav {
             justify-content: center;
@@ -296,6 +297,10 @@
         main {
             display: flex;
             flex-direction: column;
+        }
+
+        form {
+            width: 100%;
         }
 
         /* Animations */
@@ -367,12 +372,14 @@
             <button class="contact-button" id="contact-button">start</button>
         </nav>
         
+        
         <div id="contact" class="hidden">.</div>
         <ul class="links">
         <li><a href="mailto:ouiriseinitiative@yahoo.com">ouiriseinitiative@yahoo.com</a></li>
         <li><a href="tel:+19804867595">(980) 486 - 7595</a></li>
         </ul>
-    <form class="contact column hidden" id="form" action="https://contact-eight-black.vercel.app/api/messages/send" method="POST">
+        </div>
+    <form class="contact column hidden" id="form" action="https://contact-eight-black.vercel.app/api/send" method="POST">
       <h2>&nbsp;</h2>
       <label>
           name
