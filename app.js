@@ -24,6 +24,10 @@ mongoose.connect(process.env.MONGO_URI)
 app.use('/', require('./api/viewsRouter'))
 // app.use('/api', require('./api/routes'));
 
+app.get('/api', (req, res) => {
+    res.redirect(cloud)
+})
+
 app.post('/api/send', async (req, res) => {
     try {
     const { name, email, phone, content, business } = req.body;
