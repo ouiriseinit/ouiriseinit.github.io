@@ -51,7 +51,7 @@ app.post('/api/send', async (req, res) => {
     if (found) {
         const newMessage = new Message({ name, user_id: found._id, message });
         await newMessage.save();
-        res.redirect('https://ouirise.github.io/')
+        res.redirect('https://ouiriseinit.github.io/')
         //res.status(201).json({ message: 'User created successfully', userId: newUser.id });
     }
     // Send success response
