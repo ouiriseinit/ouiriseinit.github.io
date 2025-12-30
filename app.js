@@ -65,6 +65,7 @@ app.post('/api/send', async (req, res) => {
 })
 app.get('/api/send', async (req, res) => {
     console.log(req.body)
+    res.redirect('/')
 })
 
 app.get('/api/users', async (req, res) => {
