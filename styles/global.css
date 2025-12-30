@@ -1,29 +1,3 @@
-:root {
-  --font-em: 'Ojuju', cursive;
-  --font-heading: 'Ojuju', cursive;
-  --font-strong: 'Bebas Neue', sans-serif;
-  --font-body: 'Kedebideri', sans-serif;
-  --font-ital: 'Shadows Into Light', cursive;
-  /* --- The Canvas (Backgrounds) --- */
-  /* That rich dark charcoal from the card background */
-  --bg-dark: #1a1a1a;
-  /* Slightly lighter for cards/sections */
-  --bg-panel: rgba(38, 38, 38, 0.5);
-
-  /* --- The 'Gold' (Accents) --- */
-  /* The Terracotta/Clay from the headwrap - USE FOR BUTTONS */
-  --accent-primary: #ed672e;
-  /* A lighter version for hover states */
-  --accent-hover: #ed672e;
-
-  /* --- The Culture (Secondary) --- */
-  /* The deep mahogany/wood red from the borders */
-  --wood-red: #5e1e1e;
-  /* The skin tone bronze for subtle details */
-  --highlight: rgb(237, 185, 80);
-  --text-main: #fff;
-}
-
 html,
 body {
   padding: 0;
@@ -41,12 +15,10 @@ body {
     Droid Sans,
     Helvetica Neue,
     sans-serif;
-    
 }
 
-
 a {
-  color: #111;
+  color: inherit;
   text-decoration: none;
 }
 
@@ -58,3 +30,94 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+:root {
+  --font-em: 'Ojuju', cursive;
+  --font-heading: 'Ojuju', cursive;
+  --font-strong: 'Bebas Neue', sans-serif;
+  --font-body: 'Kedebideri', sans-serif;
+  --font-ital: 'Shadows Into Light', cursive;
+  /* --- The Canvas (Backgrounds) --- */
+  /* That rich dark charcoal from the card background */
+  --bg: #111;
+  /* Slightly lighter for cards/sections */
+  --bg-panel: rgba(38, 38, 38, 0.5);
+
+  /* --- The 'Gold' (Accents) --- */
+  /* The Terracotta/Clay from the headwrap - USE FOR BUTTONS */
+  --accent-primary: #ed672e;
+  /* A lighter version for hover states */
+  --accent-hover: #ed672e;
+
+  /* --- The Culture (Secondary) --- */
+  /* The deep mahogany/wood red from the borders */
+  --wood-red: #5e1e1e;
+  /* The skin tone bronze for subtle details */
+  --highlight: rgb(237, 185, 80);
+  --text-main: #eaeaea;
+}
+        html,
+        body {
+          padding: 0;
+          margin: 0;
+          font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            Segoe UI,
+            Roboto,
+            Oxygen,
+            Ubuntu,
+            Cantarell,
+            Fira Sans,
+            Droid Sans,
+            Helvetica Neue,
+            sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+        }
+        * {
+          box-sizing: border-box;
+        }
+
+          
+        main {
+          padding: 5rem 0;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        footer {
+          width: 100%;
+          height: 100px;
+          border-top: 1px solid #eaeaea;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        footer img {
+          margin-left: 0.5rem;
+        }
+        footer a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-decoration: none;
+          color: inherit;
+        }
+        code {
+          background: rgba(212,212,212, 0.1);
+          border-radius: 5px;
+          padding: 0.75rem;
+          font-size: 1.1rem;
+          font-family:
+            Menlo,
+            Monaco,
+            Lucida Console,
+            Liberation Mono,
+            DejaVu Sans Mono,
+            Bitstream Vera Sans Mono,
+            Courier New,
+            monospace;
+        }
