@@ -68,8 +68,11 @@ app.post('/api/send', async (req, res) => {
 //   }
 })
 app.get('/api/send', async (req, res) => {
-if (req.body) {
-    console.log(req)
+if (req.params) {
+    console.log(req.params)
+
+    //?name=kannalocal&email=test&phone=test&business=ouirise&message=test
+    
     
     // const { name, email, phone, message } = req.body;
 //     try {
