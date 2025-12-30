@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mellow Yello Coaching</title>
+    <style>
+    :root {
+        --bg: #050505;
+        --bg-panel: #111111;
+        --color: rgba(255, 255, 255, 0.8);
+        --border: rgba(255, 255, 255, 0.1);
+        --hover: #ffffff;
+        --accent: #0070f3; /* Subtle blue for focus states */
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: var(--bg);
+        color: var(--color);
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* Layout Containers */
+    header, main, footer {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        background: rgba(5, 5, 5, 0.8);
+        backdrop-filter: blur(10px);
+        z-index: 100;
+        max-height: var(--header-height);
+    }
+    header nav ul {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        padding: 4rem 2rem;
+        min-height: 80vh;
+    }
+
+    /* Typography */
+    h1, h2 {
+        color: var(--hover);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+    }
+
+    h1.header-title {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    section {
+        padding: 0 1rem;
+    }
+    /* Sections & Cards */
+    section.bio, .links, form {
+        animation: fadeIn 0.8s ease forwards;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .services li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border);
+        width: fit-content;
+        font-size: 0.95rem;
+    }
+
+    .links h2 {
+        font-size: 1rem;
+        text-transform: uppercase;
+        color: var(--color);
+        margin-bottom: 1.5rem;
+    }
+
+    .links li {
+        margin-bottom: 0.8rem;
+    }
+
+    a {
+        text-decoration: none;
+        transition: var(--transition);
+        font-size: 1.1rem;
+        color: var(--color);
+    }
+
+    /* Interaction States */
+    a:hover {
+        color: var(--hover);
+        padding-left: 5px;
+        text-decoration: underline
+    }
+
+    button, input[type="submit"] {
+        cursor: pointer;
+        background: transparent;
+        background: var(--bg-panel);
+        color: var(--bg);
+        padding: 1rem 2rem;
+        border-radius: 4px;
+        transition: var(--transition);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        border: none;
+        color: var(--hover);
+        border: 1px solid var(--border);
+    }
+
+    button:hover, input[type="submit"]:hover {
+        border: var(--border);
+        
+    }
+    button:active, input[type="submit"]:active {
+        border: 1px solid var(--border);
+    }
+
+    /* Form Styling */
+    .hidden {
+        display: none;
+    }
+
+    form {
+        background: var(--bg-panel);
+        border: 1px solid var(--border);
+        padding: 3rem;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 600px;
+        margin-top: var(--header-height);
+    }
+
+    label {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    input[type="text"], input[type="time"], input[type="date"], input[type="number"],
+    textarea {
+        background: #1a1a1a;
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 1rem;
+        color: white;
+        font-family: inherit;
+        transition: var(--transition);
+    }
+
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: var(--color);
+        background: #222;
+    }
+
+    input[type="submit"] {
+        border: none;
+        padding: 1rem;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+
+    /* Footer */
+    footer {
+        margin-top: 5rem;
+        border-top: 1px solid var(--border);
+        font-size: 0.75rem;
+        opacity: 0.6;
+    }
+
+    nav {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;}
+
+    p {
+    }
+    .about { position: relative; bottom: 3rem;}
+    .contact-button {
+        margin-top: 1rem;
+    }
+
+    main li {
+        margin: 0.25rem 0;
+    }
+
+    label.datetime {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    label.datetime input {
+        grid-row: 2;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @media screen and (max-width: 1000px) {
+        
+    }
+    @media screen and (max-width: 768px) {
+        body {
+            overflow-x:hidden;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        header button {
+        }
+    }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Mellow Yello Coaching </h1>
+    <button onclick="toggleContact()">start</button>
+</header>
+
+<main>
+<section class="hero">
+    <div class="container">
+        <h2>unlock your full 🎮🎯 potential 🏆🔥</h2>
+        <p>Personalized training designed for gamers of all skill levels. <br>From beginners learning aim and positioning to seasoned players refining meta strategies, we've got the expertise to guide you.</p>
+        <button class="contact-button" onclick="toggleContact()">Schedule Your First Session</button>
+    </div>
+</section>
+
+
+<section class="services">
+    <h2>rank up with</h2>
+    <ul>
+        <li><strong>One-on-One Tutoring 🔥⚔️</strong> <br> Tailored sessions focusing on your favorite games or skill areas.</li>
+        <li><strong>Group Workshops 🎯🗡️</strong> <br> Collaborative learning experiences where you can share tips, strategies, and tricks with fellow gamers.</li>
+        <li><strong>Creative Drills 🎲🎮</strong> <br> Break out of the norm by tackling challenging drills that push your boundaries and refine your fundamentals.</li>
+        <li><strong>Strategic Mastery 📜🧨</strong> <br> Dive deep into game mechanics to elevate your gameplay from novice to pro.</li>
+    </ul>
+</section>
+
+<form class="contact column hidden" id="form" action="https://contact-eight-black.vercel.app/api/send" method="POST">
+        <h2>Reserve a Session</h2>
+        <label>
+          username
+          <input type="text" name="name" />
+      </label>
+      <label>discord tag
+            <input type="text" name="discord" />
+      </label>
+      <label>
+          email <span class="hidden">(optional)</span>
+          <input type="text" name="email" />
+      </label>
+      <label>
+            <!-- if only teaching kids probably should have parent guardian phone instead of phone; otherwise phone is optional bc discord -->
+          <span class="hidden">parent or guardian&nbsp;</span>phone <span class="hidden">&nbsp;(optional)</span>
+          <input type="text" name="phone" />
+      </label>
+      <label class="datetime">when <input type="date" name="date"><input type="time" name="time"></label>
+      <label>duration
+        <input type="number" placeholder="hours">
+      </label>
+      <label>
+          what do you want to work on? <span class="hidden">(optional)</span>
+          <textarea name="content" placeholder="aim, positioning, movement, mindset, ..."></textarea>
+      </label>
+      <input class="hidden" type="hidden" name="business" value="mellowyello" />
+      <input type="submit" value="enter" />
+    </form>
+<hr>
+<section class="about">
+    <p>The mission is more than just teaching video games; it's about fostering a love for learning, strategy, and collaboration! <br> We understand that every gamer has their own journey.</p>
+    <p>Our tutors are passionate gamers who excel in various titles, ensuring you receive personalized guidance that caters to your unique style of play. <br> Join a community where mistakes aren't setbacks but stepping stones to mastery!</p>
+</section>
+
+
+</main>
+<footer>
+    <div class="container">
+        <p>Contact <a href="ouiriseinit.github.io/">ouiriseinitiative</a> to request customization. All rights reserved.</p>
+    </div>
+</footer>
+<script>
+    const toggleContact = () => {
+          // This toggles just the 'hidden' class without wiping out other classes
+          form.classList.toggle('hidden');
+          
+          // Smooth scroll to form if it's being shown
+          if (!form.classList.contains('hidden')) {
+              form.scrollIntoView({ behavior: 'smooth' });
+          }
+      }
+  window.addEventListener('load', function() {
+      const contactHeading = document.getElementById('contact-heading');
+      const contactLink = document.getElementById('contact-link')
+      const contactCta = document.getElementsById('contact-cta');
+      const form = document.getElementById('form');
+      
+      
+
+      contactLink.onclick = toggleContact
+      contactCta.onclick = toggleContact
+      contactHeading.onclick = toggleContact;
+  });
+</script>
+
+</body>
+</html>

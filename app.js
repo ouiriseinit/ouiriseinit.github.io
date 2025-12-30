@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path')
 const bodyParser = require('body-parser')
 require('dotenv').config()
+const { User, Message } = require('./api/db/modles') 
 
 const app = express();
 
@@ -18,29 +19,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // --- DATABASE CONNECTION ---
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log('✅ Connected to MongoDB Atlas'))
+    .then(() => console.log('✅'))
     .catch(err => console.error('❌ MongoDB Connection Error:', err));
 
-// --- DATABASE SCHEMA & MODEL ---
-const messageSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    content: { type: String, required: true },
-    date: { type: Date, default: Date.now },
-    business: { type: String, required: false}
-});
-const userSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    phone: { type: String, required: false },
-    email: { type: String, required: false },
-    date: { type: Date, default: Date.now },
-    business: { type: String, required: false }
-})
+app.use('/', require('./api/viewsRouter'))
+// app.use('/api', require('./api/routes'));
 
-const Message = mongoose.model('Message', messageSchema);
-const User = mongoose.model('User', userSchema)
-
-// --- API ROUTES ---
+app.use('/contacts', require('./routes/user'));
+app.use('/messages', require('./routes/message'));
+app.use('/admin', require('./routes/admin'))
 
 app.post('/api/send', async (req, res) => {
     try {
@@ -63,86 +50,15 @@ app.post('/api/send', async (req, res) => {
         console.log('User ID:', user_id);
         const newMessage = new Message({ name, user_id, content, business });
         await newMessage.save();
-        res.redirect('https://ouiriseinit.github.io/')
+        res.redirect(cloud)
     }
     else res.send('user not created')
   } catch (error) {
     console.error('Error creating user:', error);
     // Send error response
     // res.status(500).json({ error: 'Failed to ping database' });
-    res.redirect('https://ouiriseinit.github.io/')
+    res.redirect(cloud)
   }
-})
-
-app.get('/api/users', async (req, res) => {
-    const result = await User.find({});
-    console.log(result)
-    res.json(result);
-});
-app.get('/api/user/:id', async (req, res) => {
-    const userId = req.params.id;
-    const user = await User.findById(userId);
-
-    if (!user) return res.status(404).json({ error: 'User not found' });
-    res.json(user);
-})
-app.get('/api/user/:id/delete', async (req, res) => {
-    const userId = req.params.id;
-    await User.findByIdAndDelete(userId);
-    res.redirect('/users');
-})
-
-app.get('/api/messages', async (req, res) => {
-    const result = await Message.find({});
-    res.json(result);
-})
-
-app.get('/api/message/:id', async (req, res) => {
-    const messageId = req.params.id;
-    const message = await Message.findById(messageId);
-    res.json(message);
-})
-app.get('/api/message/:id/delete', async (req, res) => {
-    const messageId = req.params.id;
-    await Message.findByIdAndDelete(messageId);
-    res.redirect('https://ouiriseinit.github.io/');
-})
-app.get('/api/user/:id/messages', async (req, res) => {
-    const userId = req.params.id;
-    const messages = await Message.find({ user_id: userId });
-    res.json(messages);
-});
-
-// DB ADMIN ROUTES
-app.get('/api/db/load', async (req, res) => {
-    const users = require('./data/users.json');
-    users.map(async (user) => {
-        const newUser = new User(user);
-        await newUser.save();
-    })
-    res.redirect('https://ouiriseinit.github.io/');
-})
-app.get('/api/db/clear', async (req, res) => {
-    await User.deleteMany({});
-    await Message.deleteMany({});
-    res.redirect('/');
-})
-
-// --- VIEW ROUTES ---
-app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'index.html'))
-})
-app.get('/users', ( req, res) => {
-    res.sendFile(path.resolve(__dirname, 'pages/users.html'))
-})
-app.get('/messages', ( req, res) => {
-    res.sendFile(path.resolve(__dirname, 'pages/messages.html'))
-});
-app.get('/user/:id', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'pages/user.html'))
-});
-app.get('/user/:id/messages', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'pages/messages.html'))
 })
 
 // --- START SERVER ---

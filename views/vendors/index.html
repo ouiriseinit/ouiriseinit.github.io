@@ -1,15 +1,15 @@
+<!-- vendor.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ouirise initiative</title>
+    <title>Vendor Name</title>
     <style>
         :root {
             --bg: #050505;
             --bg-panel: #111111;
             --color: rgba(255, 255, 255, 0.9);
-            --border: rgba(255, 255, 255, 0.1);
             --hover: #ffffff;
             --accent: #0070f3; /* Subtle blue for focus states */
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -62,8 +62,11 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 4rem;
-            padding-top: 4rem;
             min-height: 80vh;
+            width: 100%;
+        }
+        main > * {
+            width: 100%;
         }
 
         /* Typography */
@@ -195,7 +198,6 @@
             transition: var(--transition);
         }
 
-
         /* Footer */
         footer {
             margin-top: 5rem;
@@ -227,22 +229,21 @@
 
         .bio {
             display: flex;
+            justify-content: center;
             align-items: center;
             flex-wrap: wrap;
             background: var(--bg-panel);
             border: 1px solid var(--border);
-            padding: 0rem 1rem;
+            padding: 0rem 3rem;
             border-radius: 8px;
             gap: 40%;
         }
         .bio div {
             height: fit-content;
+           
             position: relative;
             text-align: center;
             
-        }
-        bio .links {
-            border: solid red 1px;
         }
         .bio div nav {
             justify-content: center;
@@ -284,6 +285,9 @@
             margin-bottom: 2rem;
         }
 
+        h2.contact-heading {
+            margin-top: 3rem;
+        }
         h2.contact-heading:hover, a:hover {
             cursor: pointer;
             color: var(--hover);
@@ -299,10 +303,6 @@
             flex-direction: column;
         }
 
-        form {
-            width: 100%;
-        }
-
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -311,12 +311,21 @@
         @media screen and (min-width: 1600px) {
             .contact-heading {
                 margin-top: -4rem;
+                border: solid red 1px;
             }
         }
         @media screen and (max-width: 1600px) {
-            
+            .projects {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            .project-item {
+                width: 100%;
+            }
             p {
                 font-size: 1.2rem;
+                width: 100%;
             }
         }
         @media (max-width: 768px) {
@@ -327,7 +336,7 @@
             }
             main {
                 width: 100vw;
-                padding: 0 1rem;
+                padding: 0 3rem;
                 padding-right: 3rem;
             }
             header {
@@ -337,11 +346,9 @@
                 display: flex;
                 justify-content: space-between;
             }
-            .projects {
-                padding: 0;
-            }
-            .project-item {
-                width: 100%;
+            .services {
+                padding: 0 1rem;
+                padding-right: 2rem;
             }
             
         }
@@ -350,107 +357,98 @@
 <body>
 <header>
   <!-- site icon -->
-  <a href="https://ouiriseinit.github.io/"><h1 class="header-title">Ouirise Initiative</h1></a>
-    <a href="#contact" class="hidden">contact</a>
+  <a href="https://vendor-name.com"><h1 class="header-title">Vendor Name</h1></a>
+    <a onclick="toggleContact()">contact</a>
 </header>
 
 <!-- Main Content -->
 <main>
     <section class="bio">
         <ul class="services">
-            <h2>Oui Launch <br> Your Vision 🚀</h2>
-            <li>Design Develop Deploy.</li>
-            <li>Software Engineering</li>
-            <li>Websites and SEO</li>
-            <li>E-commerce</li>
-            <li>Cloud-based Infrastructure</li>
-            <li>Free Tech Education</li>            
+            <h2>Discover Our Offerings</h2>
+            <li>Customization and Personalization</li>
+            <li>Innovative Solutions for Every Need</li>
+            <li>Quality Craftsmanship and Durability</li>
+            <li>Global Accessibility and User Experience</li>
+            <li>Sustainability-Focused Practices</li>
+            
         </ul>
         <div>
-            <h2 id="contact-heading" class="contact-heading">Contact</h2>
-        <nav>
-            <button class="contact-button" id="contact-button">start</button>
-        </nav>
-        
-        
-        <div id="contact" class="hidden">.</div>
-        <ul class="links">
-        <li><a href="mailto:ouiriseinitiative@yahoo.com">ouiriseinitiative@yahoo.com</a></li>
-        <li><a href="tel:+19804867595">(980) 486 - 7595</a></li>
-        </ul>
+            <h2 id="contact-heading" class="contact-heading">Contact Us</h2>
+            <nav>
+                <button class="contact-button" id="contact-button">Get Started</button>
+            </nav>
+            
+            <div id="contact" class="hidden">
+                <!-- Form for inquiries or bookings -->
+            </div>
         </div>
-    <form class="contact column hidden" id="form" action="https://contact-eight-black.vercel.app/" method="POST">
+    </section>
+
+    <form class="contact column hidden" id="form" action="https://contact-eight-black.vercel.app/api/messages/send" method="POST">
       <h2>&nbsp;</h2>
       <label>
-          name
+          Name
           <input type="text" name="name" />
       </label>
       <label>
-          email
-          <input type="text" name="email" />
+          Email
+          <input type="email" name="email" />
       </label>
       <label>
-          phone number
-          <input type="text" name="phone" />
+          Phone Number
+          <input type="tel" name="phone" />
       </label>
-      <label>
-          <a onclick="() => toggleInput(document.getElementById(message))">leave a message (optional)
-          <textarea id="message" name="content" class="hidden"></textarea>
-      </label>
-      <input class="hidden" type="hidden" name="business" value="ouirise" />
-      <input type="submit" value="enter" />
-    </form>
-    <section class="portfolio">
-        <h2 class="portfolio-heading"><span>🎨 Bring your design or&nbsp;</span><span>start from a template ✨</span></h2>
       
+      <label for="message">
+          Message (Optional)
+          <textarea id="message" name="content"></textarea>
+      </label>
+      <input type="hidden" name="business" value="vendor-name" />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <section class="portfolio">
+        <h2>Featured Collections</h2>
+        <!-- Example Project Items -->
         <div class="projects">
-            <div class="project-item"><a target="_blank" href="https://ouiriseinit.github.io/culturalgold">
-                    <h3>Cultural Gold</h3>
-                    <figure><img src="https://ouiriseinit.github.io/culturalgold/images/logo-alt-removebg-preview.png"/><figcaption>View</figcaption></figure>
+            <div class="project-item"><a target="_blank" href="https://vendor-name.com/collection1">
+                    <h3>Creative Collection 1</h3>
+                    <figure><img src="path/to/image1.png"/><figcaption>View Gallery</figcaption></figure>
             </a></div>
-            <div class="project-item"><a target="_blank" href="https://ouiriseinit.github.io/miyu/">
-                <h3>Miyu</h3>
-                <figure><img src="https://ouiriseinit.github.io/public/images/miyu.png" alt="Miyu"/><figcaption>View</figcaption></figure>
+            <div class="project-item"><a target="_blank" href="https://vendor-name.com/collection2">
+                <h3>Creative Collection 2</h3>
+                <figure><img src="path/to/image2.png" alt="Creative Collection 2" /><figcaption>View Gallery</figcaption></figure>
             </a></div>
-            <div class="project-item"><a target="_blank" href="https://ouiriseinit.github.io/thejugobar">
-                <h3>The Jugo Bar</h3>
-                <figure><img src="https://images.squarespace-cdn.com/content/v1/67cf71a48a9c4f3de71c1341/2c837587-2069-4276-8f98-348194451dcb/D7B8A19A-6683-498A-8F28-C5447229EDBE.png?format=1500w" alt="The Jugo Bar" /><figcaption>View</figcaption></figure>
-            </a></div>  
             
         <!-- Add more project items as needed -->
         </div>
     </section>
+
 </main>
 
-
-
 <!-- Footer -->
- <footer>
-    <p>&copy; 2025 Ouirise Initiative</p>
- </footer>
-</body>
+<footer>
+    <p>&copy; 2025 Vendor Name</p>
+</footer>
 <script>
-  window.addEventListener('load', function() {
+    window.addEventListener('load', function() {
       const contactHeading = document.getElementById('contact-heading');
       const contactButton = document.getElementById('contact-button');
       const form = document.getElementById('form');
-      
-    const toggleInput = (input) => {
-        input.classList.toggle('hidden')
-    }
 
       const toggleContact = () => {
           // This toggles just the 'hidden' class without wiping out other classes
           form.classList.toggle('hidden');
-          
+
           // Smooth scroll to form if it's being shown
           if (!form.classList.contains('hidden')) {
               form.scrollIntoView({ behavior: 'smooth' });
           }
-      }
+      };
 
       contactButton.onclick = toggleContact;
       contactHeading.onclick = toggleContact;
-  });
+    });
 </script>
-</html>
+</body>
