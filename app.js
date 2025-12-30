@@ -40,7 +40,7 @@ const User = mongoose.model('User', userSchema)
 
 // --- API ROUTES ---
 
-app.post('/api/send', async (req, res) => {
+app.post('api/send', async (req, res) => {
     try {
     const { name, email, phone, content } = req.body;
     let user_id = null;
@@ -72,59 +72,59 @@ app.post('/api/send', async (req, res) => {
   }
 })
 
-app.get('/api/users', async (req, res) => {
+app.get('api/users', async (req, res) => {
     const result = await User.find({});
     console.log(result)
     res.json(result);
 });
-app.get('/api/user/:id', async (req, res) => {
+app.get('api/user/:id', async (req, res) => {
     const userId = req.params.id;
     const user = await User.findById(userId);
 
     if (!user) return res.status(404).json({ error: 'User not found' });
     res.json(user);
 })
-app.get('/api/user/:id/delete', async (req, res) => {
+app.get('api/user/:id/delete', async (req, res) => {
     const userId = req.params.id;
     await User.findByIdAndDelete(userId);
     res.redirect('/users');
 })
 
-app.get('/api/messages', async (req, res) => {
+app.get('api/messages', async (req, res) => {
     const result = await Message.find({});
     res.json(result);
 })
 
-app.get('/api/message/:id', async (req, res) => {
+app.get('api/message/:id', async (req, res) => {
     const messageId = req.params.id;
     const message = await Message.findById(messageId);
     res.json(message);
 })
-app.get('/api/message/:id/delete', async (req, res) => {
+app.get('api/message/:id/delete', async (req, res) => {
     const messageId = req.params.id;
     await Message.findByIdAndDelete(messageId);
     res.redirect('https://ouiriseinit.github.io/');
 })
-app.get('/api/user/:id/messages', async (req, res) => {
+app.get('api/user/:id/messages', async (req, res) => {
     const userId = req.params.id;
     const messages = await Message.find({ user_id: userId });
     res.json(messages);
 });
 
 // DB ADMIN ROUTES
-app.get('/api/db/load', async (req, res) => {
-    const users = require('./data/users.json');
-    users.map(async (user) => {
-        const newUser = new User(user);
-        await newUser.save();
-    })
-    res.redirect('https://ouiriseinit.github.io/');
-})
-app.get('/api/db/clear', async (req, res) => {
-    await User.deleteMany({});
-    await Message.deleteMany({});
-    res.redirect('/');
-})
+// app.get('/api/db/load', async (req, res) => {
+//     const users = require('./data/users.json');
+//     users.map(async (user) => {
+//         const newUser = new User(user);
+//         await newUser.save();
+//     })
+//     res.redirect('https://ouiriseinit.github.io/');
+// })
+// app.get('/api/db/clear', async (req, res) => {
+//     await User.deleteMany({});
+//     await Message.deleteMany({});
+//     res.redirect('/');
+// })
 
 // --- VIEW ROUTES ---
 app.get('/', (req, res) => {
