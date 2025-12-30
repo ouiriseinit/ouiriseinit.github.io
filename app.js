@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // --- DATABASE CONNECTION ---
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log('✅ Connected to MongoDB Atlas'))
+    .then(() => console.log('✅'))
     .catch(err => console.error('❌ MongoDB Connection Error:', err));
 
 app.use('/', require('./api/viewsRouter'))

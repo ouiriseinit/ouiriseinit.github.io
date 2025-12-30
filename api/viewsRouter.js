@@ -16,6 +16,10 @@ app.get('/user/:id/messages', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'views/messages.html'))
 })
 
+app.get('/vendor', (req, res) => {
+    res.sendFile(path.resolve(process.env.HOME_PATH, 'views/clients/mellow/index.html'))
+})
+
 app.get('/mellow', (req, res) => {
     res.sendFile(path.resolve(process.env.HOME_PATH, 'views/clients/mellow/index.html'))
 });
