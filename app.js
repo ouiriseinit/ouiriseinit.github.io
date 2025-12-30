@@ -69,6 +69,7 @@ app.post('/api/send', async (req, res) => {
 app.get('/api/send', async (req, res) => {
 if (req.body) {
     console.log(req.body)
+    res.redirect('/')
     // const { name, email, phone, message } = req.body;
 //     try {
     
