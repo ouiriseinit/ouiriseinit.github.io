@@ -71,7 +71,6 @@ app.get('/api/send', async (req, res) => {
     if (req) {
     console.log(req)
     }
-    res.redirect('/')
     //?name=kanna &email=test&phone=test&business=ouirise&message=test
     
     
@@ -99,7 +98,7 @@ app.get('/api/send', async (req, res) => {
 //     // Send error response
 //     res.status(500).json({ error: 'Failed to create user' });
 //   }
-}
+// }
 res.redirect('/')
 })
 
