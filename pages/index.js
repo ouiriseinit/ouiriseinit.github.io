@@ -11,11 +11,11 @@ export default function Home() {
 
       <main>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Ouirise Initiative
         </h1>
 
         <p className={styles.description}>
-          Get started by editing <code>pages/index.js</code>
+          Oui Launch Your Project 🚀
         </p>
 
         <div className={styles.grid}>
@@ -61,6 +61,7 @@ export default function Home() {
       </footer>
 
       <style jsx>{`
+        
         main {
           padding: 5rem 0;
           flex: 1;
@@ -88,7 +89,7 @@ export default function Home() {
           color: inherit;
         }
         code {
-          background: #fafafa;
+          background: rgba(212,212,212, 0.1);
           border-radius: 5px;
           padding: 0.75rem;
           font-size: 1.1rem;
@@ -105,6 +106,31 @@ export default function Home() {
       `}</style>
 
       <style jsx global>{`
+      :root {
+  --font-em: 'Ojuju', cursive;
+  --font-heading: 'Ojuju', cursive;
+  --font-strong: 'Bebas Neue', sans-serif;
+  --font-body: 'Kedebideri', sans-serif;
+  --font-ital: 'Shadows Into Light', cursive;
+  /* --- The Canvas (Backgrounds) --- */
+  /* That rich dark charcoal from the card background */
+  --bg: #111;
+  /* Slightly lighter for cards/sections */
+  --bg-panel: rgba(38, 38, 38, 0.5);
+
+  /* --- The 'Gold' (Accents) --- */
+  /* The Terracotta/Clay from the headwrap - USE FOR BUTTONS */
+  --accent-primary: #ed672e;
+  /* A lighter version for hover states */
+  --accent-hover: #ed672e;
+
+  /* --- The Culture (Secondary) --- */
+  /* The deep mahogany/wood red from the borders */
+  --wood-red: #5e1e1e;
+  /* The skin tone bronze for subtle details */
+  --highlight: rgb(237, 185, 80);
+  --text-main: #eaeaea;
+}
         html,
         body {
           padding: 0;
@@ -121,6 +147,8 @@ export default function Home() {
             Droid Sans,
             Helvetica Neue,
             sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
         }
         * {
           box-sizing: border-box;
