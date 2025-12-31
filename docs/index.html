@@ -2,53 +2,158 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Itemized Budget for \$999</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ouirise initiative</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            
+        }
+      
+        
+
+        body.dark {
+            background: #333;
+            color: #eaeaea;
+        }
+        body > * {
+            max-width: calc(100% - 2rem);
+        }
+        .card {
+            
+            
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: fit-content;
+            padding-top: 1rem;
+            background: #333;
+            z-index: 3;
+            border-bottom: #5e1e1e solid 1px;
+        }
+        h1 {
+            font-size: 1.45rem;
+        }
+        h2 {
+            font-size: 1.3;
+
+        }
+        h3 {
+            font-size: 1.15;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 5px;
+        }
+        .tier-card {
+            border: 2px solid #ddd;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        .price {
+            font-size: 2em;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+        }
+        header, main, footer {
+            margin-left: 1rem !important;
+        }
+    </style>
 </head>
-<body>
-    <h1>Itemized Budget for $999</h1>
+<body class="dark">
+    <header>
+        <h1>Ouirise Initiative</h1>
+        
+    </header>
+    <main>
+    <h2>Launch and Scale Your Business 🚀</h2>
+    <section>
+        <h3>Our Software Engineers</h3>
+        <p>Developed React, Angular, HTML, CSS, and Wordpress applications for industry innovators in FinTech Entreprenuership and Startups.</p>
+        <p>Incorporate modern cloud practices for data security and analytics. Use agentic workflows for smooth deployment timelines.</p>
+        <p>Well versed in building custom interfaces and dashboards for a wide variety of industries.</p>
+        <p>Placed in Hackathons and Tutored while developing solutions for business students first year at HPU.</p>
+        <h3>over 6 years of industry experience</h3>
+    </section>
+    <section>
+    <h2>Project Plans</h2>
+    <h3>Deploy and Scale</h3>
+
     
-    <section>
-        <h2>Overview</h2>
-        <p>This budget outlines the allocation of $999 for developing an MVP with core functionalities such as CRUD operations, authentication, and payment processing.</p>
+    <div class="card plan">
+        <h3>Single Page Application Plan</h3>
+        <p>Run a project in single page using modern cloud deployment tech.</p>
+        <h3>$1,500</h3>
+        <p>
+            The SPA Plan is built to draft ideas and to assist clients seeking cost-effective solutions without compromising quality.
+        </p>
+        
     </section>
+    <div class="card plan">
+        <h3>Most Value Plan</h3>
+        <p>Expert software engineers scale your business with an interactive cloud solution.</p>
+        <p>Low cost database providers and server included (usage rates apply)</p>
+        <p>Our Developers have experience in FinTech, Startups and specialize in building custom software solutions for Small Businesses, and Enterprises</p>
+        <h3>$2,000</h3>
+        <p>
+            The MVP offers a balanced approach between availability and flexibility, suitable for projects that require consistent but not full-time effort.
+        </p>
+    </div>
 
-    <section>
-        <h2>Budget Breakdown</h2>
-        <table>
-            <tr>
-                <th>Category</th>
-                <th>Estimated Hours</th>
-                <th>Cost per Hour</th>
-                <th>Total Cost</th>
-            </tr>
-            <tr>
-                <td>Core Functionalities: CRUD Operations</td>
-                <td>50 hours (minimal core features)</td>
-                <td>$19</td>
-                <td>$950</td>
-            </tr>
-            <tr>
-                <td>Authentication</td>
-                <td>10 hours</td>
-                <td>$9.5</td>
-                <td>$95</td>
-            </tr>
-            <tr>
-                <td>Payment Processing</td>
-                <td>10 hours</td>
-                <td>$9.5</td>
-                <td>$95</td>
-            </tr>
-        </table>
-    </section>
-
-    <section>
-        <h2>Total Budget</h2>
-        <p>$950 (CRUD Operations) + $95 (Authentication) + $95 (Payment Processing) = **$999**</p>
-    </section>
-
+    <div class="card plan">
+        <h3>Big Data Plan</h3>
+        <h4>$5,000</h4>
+        <p>
+            The Big Data Plan is tailored for clients who require comprehensive support and prioritized attention. This model ensures full-time focus on the client's needs without interruptions from other engagements.
+        </p>
+    </div>
+    </main>
     <footer>
-        <p>Conclusion: The budget of $999 is allocated to cover essential development tasks with a focus on minimal features for CRUD operations, authentication, and payment processing. This ensures efficient use of resources while maintaining project viability.</p>
+        <p>Built by Ouirise.</p>
     </footer>
+</main>
 </body>
 </html>
