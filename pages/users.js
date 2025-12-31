@@ -1,7 +1,4 @@
-'use client'
-
 import { useEffect, useState } from 'react'
-import global from  '../css/Gobal.module.css'
 
 export default function Users() {
     const [users, setUsers] = useState([])
