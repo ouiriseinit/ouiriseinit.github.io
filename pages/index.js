@@ -1,21 +1,50 @@
+'use client'
+import '../global.module.css'
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
+import styles from '../css/Home.module.css';
 import { useState } from 'react'
+
 
 export default function Home() {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const business = 'ouirise'
-  const [message, setMessage] = useState('')
+  const [content, setContent] = useState('')
 
   const [showForm, setShowForm] = useState(false)
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log({name, phone, email, business, message})
-    alert("ping from " + name)
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  try {
+    const response = await fetch('/api/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, phone, email, business, content }), 
+    });
+
+    // Check if the response is actually JSON before parsing
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.indexOf("application/json") !== -1) {
+      const data = await response.json();
+      if (response.ok) {
+        alert("Message sent!");
+      } else {
+        alert("Error: " + data.error);
+      }
+      return data;
+    } else {
+      const errorText = await response.text();
+      console.error("Server returned non-JSON response:", errorText);
+      alert("Server Error: Check console for details");
+    }
+  } catch (error) {
+    console.error('Error creating message:', error);
   }
+};
   return (
     <div className={styles.container}>
       <Head className={styles.header}>
@@ -40,13 +69,13 @@ export default function Home() {
           <li>Database creation and analyitics</li>
         </ul>
         { showForm && 
-          <form className='form'> 
+          <form className='form' onSubmit={async (e) => await handleSubmit(e)}> 
               <h2>Contact Us</h2>
               <input type="text" placeholder="name" onChange={(e => setName(e.target.value))} />
               <input type="phone" placeholder="phone" onChange={(e => setPhone(e.target.value))} />
               <input type="email" placeholder="email (optional)"onChange={(e => setEmail(e.target.value))}  />
-              <input type="message" placeholder="send a message (optional)" onChange={(e => setMessage(e.target.value))} />
-              <input type="submit"  value="enter" onSubmit={(e) => handleSubmit(e)} />
+              <input type="message" placeholder="send a message (optional)" onChange={(e => setContent(e.target.value))} />
+              <input type="submit"  value="enter"  />
           </form>
         }
         <div className={styles.grid}>
@@ -89,107 +118,19 @@ export default function Home() {
 
       <style jsx>{`
 
-        main {
-          flex: 1;
-        }
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-        }
-        footer img {
-          margin-left: 0.5rem;
-        }
-        footer a {
-        color: rgb(237, 185, 80);
-        }
-        code {
-          background: #111;
-          color: #eaeaea;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family:
-            Menlo,
-            Monaco,
-            Lucida Console,
-            Liberation Mono,
-            DejaVu Sans Mono,
-            Bitstream Vera Sans Mono,
-            Courier New,
-            monospace;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem 0;
-      } 
-            
-            h1{ font-size: 1.6rem;}
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0.5rem 1rem;
-          margin: 0;
-          font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            Segoe UI,
-            Roboto,
-            Oxygen,
-            Ubuntu,
-            Cantarell,
-            Fira Sans,
-            Droid Sans,
-            Helvetica Neue,
-            sans-serif;
-          background: #111;
-          color: #eaeaea;
-        }
-        * {
-          box-sizing: border-box;
-        }
-          form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  background: rgba(38, 38, 38, 0.5);
-  padding: 1rem 2rem 2rem;
-  border: solid 1px #5e1e1e;
-  border-radius: 0.5rem;
-  max-width: 24rem;
-  width: 100%;
-  margin: 2rem auto;
-}
-  input {
-  margin-right: 1rem;
-  background: #111;
-  color: #eaeaea;
-  padding: 1rem 0.5rem;
-  border: solid 1px #5e1e1e;
-  border-radius: 0.25rem;
-  width: 100%;
-  }
-  input:hover {
-     padding: 1rem 1rem;  
-
-  }
-
-  footer {
-        border-top: solid 1px #5e1e1e;
-        margin-top: 3rem;
-  }
         
-
-  code {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-  }
       `}</style>
+    </div>
+  );
+}
+
+function Package({ title, description, price }) {
+  return (
+    <div className={styles.card}>
+      <h2 className={styles.title}>{title}</h2>
+      <p className={styles.description}>{description}</p>
+      <p className={styles.price}>Price: ${price}</p>
+      <button className={styles.button}>Get Started</button>
     </div>
   );
 }
