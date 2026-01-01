@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xavier Austin Group LLC | Executive Leadership Consulting</title>
+    <meta name="description" content="Catalyzing organizational and individual transformations through the art and science of leadership.">
+    
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #0f172a; /* Deep Navy */
+            --accent: #c5a059;  /* Champagne Gold */
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --white: #ffffff;
+            --bg-soft: #f1f5f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--white);
+            color: var(--primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 30px 0;
+            background: transparent;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
+            transition: 0.3s;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), 
+                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-tagline {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        /* --- Intro Section --- */
+        .intro-box {
+            padding: 100px 0;
+            text-align: center;
+            background: var(--bg-soft);
+        }
+
+        .intro-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .intro-box p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+
+        /* --- Art & Science Section --- */
+        .work-section {
+            padding: 100px 0;
+        }
+
+        .dual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .work-card {
+            padding: 40px;
+            border-top: 4px solid var(--accent);
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .work-card h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .work-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .list-items {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .list-items li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .list-items li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .sub-list {
+            margin-left: 20px;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* --- About & Bio --- */
+        .about-section {
+            padding: 120px 0;
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .bio-image img {
+            width: 100%;
+            border: 1px solid var(--accent);
+            padding: 15px;
+        }
+
+        .bio-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .bio-text .title {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        .badge-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .badge {
+            border: 1px solid var(--accent);
+            padding: 8px 16px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        /* --- CTA --- */
+        .cta {
+            padding: 100px 0;
+            text-align: center;
+            background: var(--bg-soft);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 18px 45px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            font-size: 0.8rem;
+            background: #fff;
+            color: var(--text-muted);
+            border-top: 1px solid #eee;
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 992px) {
+            .dual-grid, .bio-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .container { padding: 0 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">Xavier Austin Group LLC</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-tagline">Consulting for the Modern Executive</p>
+                <h1>Mastering the Art and Science of Leadership in a Rapidly Changing Landscape.</h1>
+                <p style="color: var(--text-muted); font-size: 1.2rem; max-width: 650px;">
+                    We partner with leaders to become more agile and resilient through strategic coaching and data-driven advisory.
+                </p>
+            </div>
+        </div>
+    </header>
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform?</h2>
+            <p style="margin-top: 20px;">For more information on engagement and advisory services:</p>
+            <a href="mailto:nicolewdean@xavieraustingroup.com" class="btn">Connect via Email</a>
+        </div>
+    </section>
+    <section class="intro-box">
+        <div class="container">
+            <h2>What We Do</h2>
+            <p>As organizations work to become more agile and resilient, leaders must master both the art and science of leadership. We catalyze organizational and individual transformations that drive improved performance, agility, and personal satisfaction.</p>
+        </div>
+    </section>
+
+    <section class="work-section">
+        <div class="container">
+            <div class="dual-grid">
+                <!-- The Art -->
+                <div class="work-card">
+                    <h4>Leadership Development</h4>
+                    <h3>The “Art” of Leadership</h3>
+                    <p>Coaching is the most valuable investment for enhancing culture and accelerating team success. We work with individuals and teams to:</p>
+                    <ul class="list-items">
+                        <li>Cultivate Awareness</li>
+                        <li>Foster Commitment and Build Relational Capital</li>
+                        <li>Develop Culture and Engagement Foundations
+                            <div class="sub-list">Collaboration • DE&I • Conflict Management</div>
+                        </li>
+                        <li>Support Organizational Effectiveness
+                            <div class="sub-list">Change Management Training • Role Design • Succession Planning</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- The Science -->
+                <div class="work-card">
+                    <h4>Consulting & Advisory</h4>
+                    <h3>The “Science” of Leadership</h3>
+                    <p>Effective management requires competency in analysis, strategy design, and execution while nurturing an environment of healthy risk-taking.</p>
+                    <ul class="list-items">
+                        <li>Customized Assessments</li>
+                        <li>Research and Analysis</li>
+                        <li>Strategic Planning Facilitation and Reporting</li>
+                        <li>Governance & Board Effectiveness Reviews</li>
+                        <li>Interim and Fractional Leadership</li>
+                        <li>Enterprise-Wide Change Management Facilitation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="bio-grid">
+                <div class="bio-image">
+                    <!-- Placeholder for Nicole's Professional Headshot -->
+                    <!-- <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="Nicole Washington-Dean"> -->
+                    <div class="badge-container">
+                        <span class="badge">Woman Owned</span>
+                        <span class="badge">Minority Owned</span>
+                    </div>
+                </div>
+                <div class="bio-text">
+                    <span class="title">Founding Consultant & Coach</span>
+                    <h2>Nicole Washington</h2>
+                    <p style="margin-bottom: 20px;">Nicole is adept at both the “art and science” of leadership. With over 20 years of corporate experience in the retail industry, her executive background includes pivotal roles in HR and Finance, working directly with Boards of Directors and C-Suite leaders.</p>
+                    <p style="margin-bottom: 20px; font-size: 0.95rem; color: var(--text-muted);">She holds an Executive MBA in Strategy & Leadership from UNC Kenan-Flagler and is a certified Change Management Professional and Career Coach. Nicole serves on the Board of Directors for the McColl Center of Art & Innovation and is dedicated to building strong partnerships that catalyze change.</p>
+                    
+                    <h3 style="color: var(--accent); margin-top: 40px; font-size: 1.5rem;">About Xavier Austin Group</h3>
+                    <p style="font-size: 0.95rem; margin-top: 15px;">Named after our founder’s two sons, Xavier Austin Group LLC was inspired by a mission to drive agility and satisfaction in the workplace. We supplement our core competencies through strategic partnerships with experienced firms to meet every client's unique needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform?</h2>
+            <p style="margin-top: 20px;">For more information on engagement and advisory services:</p>
+            <a href="mailto:nicolewdean@xavieraustingroup.com" class="btn">Get Connected</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><a href="https://ouiriseinit.github.io/">&copy; <span id="year"></span> Ouirise</a> | Xavier Austin Group LLC. All Rights Reserved.</p>
+            <p style="margin-top: 10px; color: var(--accent); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;">Strategy • Organizational Health • Executive Coaching</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(15, 23, 42, 0.95)';
+                nav.style.padding = '15px 0';
+            } else {
+                nav.style.background = 'transparent';
+                nav.style.padding = '30px 0';
+            }
+        });
+    </script>
+</body>
+</html>
