@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Solutions | Top-Rated Construction Company in Concord, NC</title>
+    <meta name="description" content="Universal Solutions: Concord's premier construction company. From remodeling to new builds. 5.0 Rated. Open 24/7. Call (980) 833-8998 for expert service.">
+    
+    <!-- Fonts: Rugged and Bold for Construction -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #f39c12; /* Construction Gold */
+            --secondary: #2c3e50; /* Slate Gray */
+            --dark: #1a252f;
+            --light: #ecf0f1;
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Roboto', sans-serif; line-height: 1.6; color: var(--dark); background: var(--white); }
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Navigation */
+        nav {
+            background: var(--dark);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary);
+        }
+        .logo { color: var(--white); font-weight: 700; font-size: 1.4rem; }
+        .logo span { color: var(--primary); }
+        .nav-phone { background: var(--primary); color: var(--dark); padding: 1rem 2rem; border-radius: 4px; text-decoration: none; font-weight: 700; }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 37, 47, 0.8), rgba(26, 37, 47, 0.8)), url('https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; line-height: 1.1; }
+        .hero p { font-size: 1.3rem; margin-bottom: 30px; max-width: 700px; color: var(--light); }
+        
+        .cta-button {
+            background: var(--primary);
+            color: var(--dark);
+            padding: 20px 40px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 0; /* Boxy, industrial feel */
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 0 #d35400;
+        }
+        .cta-button:hover { background: #e67e22; transform: translateY(-2px); }
+
+        /* Trust Stats */
+        .trust-section {
+            background: var(--light);
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding: 30px;
+            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+        }
+        .stat-item { text-align: center; }
+        .stat-number { display: block; font-size: 2rem; font-weight: 700; color: var(--secondary); font-family: 'Oswald'; }
+        .stars { color: #f1c40f; font-size: 1.2rem; }
+
+        /* Services Grid */
+        .services { padding: 80px 10%; background: #fff; }
+        .services h2 { text-align: center; font-size: 2.5rem; margin-bottom: 50px; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: var(--white);
+            border-left: 5px solid var(--primary);
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .card h3 { margin-bottom: 15px; color: var(--secondary); }
+
+        /* Info Section */
+        .contact-info {
+            background: var(--secondary);
+            color: white;
+            padding: 80px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        .contact-info h2 { color: var(--primary); margin-bottom: 25px; }
+        .info-box { font-size: 1.1rem; line-height: 2; }
+        .big-phone { font-size: 2rem; color: var(--primary); text-decoration: none; font-family: 'Oswald'; display: block; margin: 20px 0; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .contact-info { grid-template-columns: 1fr; }
+            .trust-section { gap: 20px; }
+        }
+
+        /* Fixed Footer for Mobile Conversion */
+        .mobile-call-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: var(--primary);
+            color: var(--dark);
+            text-align: center;
+            padding: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            z-index: 9999;
+            font-size: 1.2rem;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+        }
+        @media (max-width: 600px) {
+            .mobile-call-bar { display: block; }
+            body { padding-bottom: 60px; }
+        }
+    </style>
+
+    <!-- Local SEO Schema for Universal Solutions -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ConstructionBusiness",
+      "name": "Universal Solutions",
+      "image": "https://images.unsplash.com/photo-1541888946425-d81bb19480c5",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "81 Flowe St NW",
+        "addressLocality": "Concord",
+        "addressRegion": "NC",
+        "postalCode": "28027",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.4121,
+        "longitude": -80.5905
+      },
+      "telephone": "+19808338998",
+      "url": "https://universalsolutionsconcord.com",
+      "openingHours": "Mo-Su 00:00-23:59",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "34"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">UNIVERSAL <span>SOLUTIONS</span></div>
+        <a href="tel:9808338998" class="nav-phone">Contact</a>
+    </nav>
+
+    <header class="hero">
+        <h1>CONCORD'S PREMIER CONSTRUCTION EXPERTS</h1>
+        <p>Reliable, High-Quality Construction & Remodeling Services. Locally Owned and Operated.</p>
+        <a href="tel:9808338998" class="cta-button">CALL FOR AN ESTIMATE</a>
+    </header>
+
+    <section class="trust-section">
+        <div class="stat-item">
+            <span class="stat-number">5.0 RATING</span>
+            <div class="stars">★★★★★</div>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">34+ REVIEWS</span>
+            <p>On Google Business</p>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">24 HOURS</span>
+            <p>Open & Available</p>
+        </div>
+    </section>
+
+    <section class="services">
+        <h2>Expert Construction Services</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>General Construction</h3>
+                <p>Comprehensive building solutions for residential and commercial properties. We handle the heavy lifting from start to finish.</p>
+            </div>
+            <div class="card">
+                <h3>Home Remodeling</h3>
+                <p>Expert kitchen, bathroom, and full-home renovations designed to increase value and functionality.</p>
+            </div>
+            <div class="card">
+                <h3>Structural Work</h3>
+                <p>Quality framing, concrete work, and structural repairs that stand the test of time.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-info">
+        <div class="info-box">
+            <h2>Service Area & Hours</h2>
+            <p><strong>Universal Solutions</strong> is proud to serve Concord, NC, and the surrounding Cabarrus County area.</p>
+            <p style="margin-top: 15px;">
+                <strong>📍 Address:</strong><br>
+                81 Flowe St NW<br>
+                Concord, NC 28027
+            </p>
+            <p style="margin-top: 15px;">
+                <strong>⏰ Hours:</strong><br>
+                Open 24 Hours / 7 Days a Week
+            </p>
+        </div>
+        <div class="info-box">
+            <h2>Start Your Project</h2>
+            <p>Expertise you can trust. Call us today to discuss your next construction or renovation project.</p>
+            <a href="tel:9808338998" class="big-phone">(980) 833-8998</a>
+            <p>Serving our community with 5-star excellence.</p>
+        </div>
+    </section>
+
+    <footer style="background: var(--dark); color: #7f8c8d; text-align: center; padding: 40px 20px;">
+        <p>&copy; 2026 Ouirise | Universal Solutions. Concord, NC Construction Professionals.</p>
+    </footer>
+
+    <!-- Fixed Mobile Button -->
+    <a href="tel:9808338998" class="mobile-call-bar">
+        CALL: (980) 833-8998
+    </a>
+
+</body>
+</html>
