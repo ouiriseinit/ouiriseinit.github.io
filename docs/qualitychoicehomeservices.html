@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality Choice Home Services LLC | Expert Painters in Charlotte, NC</title>
+    <meta name="description" content="Quality Choice Home Services LLC offers top-rated interior and exterior painting in Charlotte, NC. 5-star service. Call (704) 323-8211 for a free estimate.">
+    
+    <!-- SEO & Open Graph -->
+    <meta property="og:title" content="Quality Choice Home Services LLC | Charlotte's #1 Painters">
+    <meta property="og:description" content="Professional residential and commercial painting. Serving Charlotte, NC and surrounding areas.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #004aad; /* Professional Blue */
+            --secondary: #f39c12; /* Call to Action Orange */
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: var(--dark); background: #fff; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
+
+        /* Navigation */
+        nav {
+            background: #fff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo { font-weight: 700; font-size: 1.2rem; color: var(--primary); }
+        .nav-phone { color: var(--primary); font-weight: 700; text-decoration: none; font-size: 1.1rem; }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1200&q=80'); /* Painting Backdrop */
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 25px; max-width: 600px; }
+        
+        .cta-button {
+            background: var(--secondary);
+            color: white;
+            padding: 18px 35px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        .cta-button:hover { transform: scale(1.05); }
+
+        /* Trust Signals */
+        .trust-bar {
+            background: var(--light);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .stars { color: #f1c40f; font-size: 1.5rem; }
+
+        /* Services */
+        .services { padding: 60px 10%; text-align: center; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .card {
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .card:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .card h3 { margin-bottom: 15px; color: var(--primary); }
+
+        /* Contact/Info Section */
+        .info-section {
+            background: var(--dark);
+            color: white;
+            padding: 60px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .info-section h2 { margin-bottom: 20px; color: var(--secondary); }
+        .contact-link { color: white; text-decoration: none; display: block; margin: 10px 0; font-size: 1.1rem; }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .info-section { grid-template-columns: 1fr; }
+            nav { flex-direction: column; gap: 10px; }
+        }
+
+        /* Fixed Mobile Footer Button */
+        .mobile-call-footer {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            z-index: 2000;
+        }
+        @media (max-width: 600px) {
+            .mobile-call-footer { display: block; }
+            body { padding-bottom: 60px; }
+        }
+    </style>
+
+    <!-- Schema.org for SEO Ranking -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "PaintingBusiness",
+      "name": "Quality Choice Home Services LLC",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1801 Willow Haven Ln",
+        "addressLocality": "Charlotte",
+        "addressRegion": "NC",
+        "postalCode": "28262",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.3125, 
+        "longitude": -80.7424
+      },
+      "telephone": "+17043238211",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "07:00",
+          "closes": "19:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "9"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">QUALITY CHOICE HOME SERVICES</div>
+        <a href="tel:7043238211" class="nav-phone">Contact</a>
+    </nav>
+
+    <header class="hero">
+        <h1>Professional Painting in Charlotte, NC</h1>
+        <p>Premium Interior & Exterior Painting. 5-Star Rated Service. Local, Trusted, and Insured.</p>
+        <a href="tel:7043238211" class="cta-button">GET A FREE ESTIMATE</a>
+    </header>
+
+    <section class="trust-bar">
+        <div class="stars">★★★★★</div>
+        <p><strong>5.0 Rating</strong> based on 9+ Google Reviews</p>
+    </section>
+
+    <section class="services">
+        <h2>Our Painting Services</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Interior Painting</h3>
+                <p>Walls, ceilings, trim, and doors. We provide clean, sharp lines and premium finishes for your home.</p>
+            </div>
+            <div class="card">
+                <h3>Exterior Painting</h3>
+                <p>Weather-resistant coatings to protect your home and increase curb appeal. High-quality prep work included.</p>
+            </div>
+            <div class="card">
+                <h3>Cabinet Refinishing</h3>
+                <p>Transform your kitchen for a fraction of the cost of new cabinets with our professional spray finishing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div>
+            <h2>Service Area</h2>
+            <p>Based in <strong>The Ariel</strong>, we proudly serve Charlotte, NC and the surrounding 28262 areas.</p>
+            <p style="margin-top:20px;"><strong>Hours:</strong><br>
+            Mon - Sat: 7:00 AM – 7:00 PM<br>
+            Sunday: Closed</p>
+        </div>
+        <div>
+            <h2>Contact Us</h2>
+            <p>Ready to start your project? Click below to call us directly. No forms, no waiting.</p>
+            <a href="tel:7043238211" class="contact-link"><strong>Phone:</strong> (704) 323-8211</a>
+            <p class="contact-link"><strong>Address:</strong> 1801 Willow Haven Ln, Charlotte, NC 28262</p>
+        </div>
+    </section>
+
+    <footer style="text-align:center; padding: 40px; background: #eee; font-size: 0.9rem;">
+        <p>&copy; 2026 Ouirise | Quality Choice Home Services LLC. All Rights Reserved.</p>
+        <p>Charlotte's Trusted House Painters.</p>
+    </footer>
+
+    <!-- Fixed Mobile Button -->
+    <a href="tel:7043238211" class="mobile-call-footer">
+        CALL FOR FREE QUOTE: (704) 323-8211
+    </a>
+
+</body>
+</html>
