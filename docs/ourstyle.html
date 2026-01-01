@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APPA STYLE | Tactical Streetwear & Skate</title>
+    <title>OUR STYLE | Tactical Streetwear & Skate</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -235,6 +235,7 @@
             color: white;
             padding: 0.5rem;
             cursor: pointer;
+            text-decoration: none;
         }
 
         .add-cart:hover {
@@ -315,15 +316,22 @@
             opacity: 0.3;
             transform: rotate(-5deg);
         }
+
+        img {
+            max-width: 100%;
+        }
+        .hidden {
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo">APPA STYLE</a>
+        <a href="#" class="logo">OUR STYLE</a>
         <nav>
             <a href="#shop">SHOP ALL</a>
-            <a href="#nba">NBA/NFL</a>
+            <a href="#nba">NBA + NFL</a>
             <a href="#skate">SKATE</a>
             <a href="#about">MISSION</a>
             <a href="#" class="cart-link">CART<span class="cart-count" id="cartCount">0</span></a>
@@ -332,30 +340,31 @@
 
     <section class="hero">
         <div class="hero-content">
-            <p>// INITIALIZING SYSTEM_APPA_V1.0</p>
-            <h1>STREETWEAR <span>TACTICAL GEAR</span> & BOARDS</h1>
-            <p>Black-owned. Athlete inspired. Built for the concrete. The intersection of professional sports apparel and underground skate culture.</p>
-            <a href="#shop" class="btn">ACCESS ARMORY</a>
+            <p>// Built by OuiRise</p>
+            <h1>STREETWEAR & <span>SKATE GEAR</span></h1>
+            <p>Black-owned. Field-tested. Built for endurance. The intersection of professional sports apparel and underground skate culture.</p>
+            <a href="#shop" class="btn">ACCESS GRANTED</a>
         </div>
     </section>
 
-    <section class="shop-section" id="shop">
-        <div class="section-header">
-            <h2>CURRENT DROPS</h2>
-            <p>HIGH-PERFORMANCE GEAR / LIMITED QUANTITIES</p>
-        </div>
+    <div id="shop" class="hidden">...</div>
 
+    <section class="shop-section" >
+        <div class="section-header">
+            <h2>YOUR CURRENT DROPS</h2>
+            <p>INITIATIVE & ARTISTIC VISION</p>
+        </div>
+<!-- 
         <div class="filter-tags">
             <div class="tag active">ALL_UNITS</div>
-            <div class="tag">NBA_SERIES</div>
-            <div class="tag">NFL_SERIES</div>
-            <div class="tag">SKATE_DEPT</div>
-            <div class="tag">TACTICAL_APPAREL</div>
-        </div>
+            <div class="tag">NBA APPAREL</div>
+            <div class="tag">NFL APPAREL</div>
+            <div class="tag">SKATE SHOP</div>
+        </div> -->
 
         <div class="product-grid">
             <!-- Product 1 -->
-            <div class="product-card">
+            <!-- <div class="product-card">
                 <div class="product-image img-skate">
                     <span style="font-size: 4rem;">🛹</span>
                     <div class="scorch">APPA_LOGISTICS_GRP</div>
@@ -364,32 +373,34 @@
                 <h3 class="product-title">"VOID" 8.25 DECK</h3>
                 <div class="product-price">$65.00</div>
                 <button class="add-cart" onclick="addToCart()">DEPLOY TO CART</button>
-            </div>
+            </div> -->
 
             <!-- Product 2 -->
             <div class="product-card">
                 <div class="product-image img-nba">
-                    <span style="font-size: 4rem;">🏀</span>
+                    <span style="font-size: 4rem;"></span>
                 </div>
-                <div class="product-category">NBA_SERIES / OVERSIZED</div>
-                <h3 class="product-title">MVP HOODIE - MAROON</h3>
-                <div class="product-price">$88.00</div>
-                <button class="add-cart" onclick="addToCart()">DEPLOY TO CART</button>
+                <div class="product-category">NBA Jerseys & Apparel</div>
+                <!-- <h3 class="product-title">CHARLOTTE HORNETS AUTHENTIC JERSEY - XL</h3>
+                <div class="product-price">$80.00</div>
+                <button class="add-cart" onclick="addToCart()">ADD TO CART</button> -->
+                <a class="add-cart" href="https://ouiriseinit.github.io">Back to Ouirise Init</a>
             </div>
 
             <!-- Product 3 -->
             <div class="product-card">
                 <div class="product-image img-nfl">
-                    <span style="font-size: 4rem;">🏈</span>
+                    <span style="font-size: 4rem;"></span>
                 </div>
-                <div class="product-category">NFL_SERIES / TACTICAL</div>
-                <h3 class="product-title">GRIDIRON CARGO JOGGER</h3>
-                <div class="product-price">$110.00</div>
-                <button class="add-cart" onclick="addToCart()">DEPLOY TO CART</button>
+                <div class="product-category">NFL Jerseys & Apparel</div>
+                <!-- <h3 class="product-title">CAROLINA PANTHERS VERIFIED HOODIE - L</h3>
+                <div class="product-price">$60.00</div>
+                <button class="add-cart" onclick="addToCart()">ADD TO CART</button> -->
+                <a class="add-cart" href="https://ouiriseinit.github.io">Back to Ouirise Init</a>
             </div>
 
             <!-- Product 4 -->
-            <div class="product-card">
+            <!-- <div class="product-card">
                 <div class="product-image" style="background: #1a1a1a;">
                     <span style="font-size: 4rem;">🎒</span>
                 </div>
@@ -397,22 +408,20 @@
                 <h3 class="product-title">OPERATOR CHEST RIG</h3>
                 <div class="product-price">$55.00</div>
                 <button class="add-cart" onclick="addToCart()">DEPLOY TO CART</button>
-            </div>
+            </div> -->
         </div>
     </section>
 
     <section class="mission" id="about">
         <div class="mission-image">
-            <div style="width: 100%; height: 400px; background: var(--maroon); opacity: 0.5; border: 1px solid var(--white); display: flex; align-items: center; justify-content: center; font-size: 5rem;">
-                BLK
-            </div>
+            <img src="./images/ouirise.jpeg">
         </div>
         <div class="mission-text">
             <h2>BLACK OWNED. <span>PURPOSE DRIVEN.</span></h2>
-            <p>APPA STYLE is more than a label. We are a tactical response to mainstream fashion. By merging the technical requirements of skateboarding with the legacy of professional American sports, we create apparel that survives the street and honors the game.</p>
+            <p>OuiRise is more than a label. We are a tactical response to mainstream fashion. By merging the technical requirements of skateboarding with the legacy of professional American sports, we create apparel that survives the street and honors the game.</p>
             <br>
-            <p>// ESTABLISHED 2024</p>
-            <p>// LOCATED: URBAN SECTOR 01</p>
+            <p>// ESTABLISHED 2025</p>
+            <p>// LOCATED: CLT</p>
         </div>
     </section>
 
@@ -432,20 +441,20 @@
                 <ul>
                     <li>SHIPPING LOGISTICS</li>
                     <li>RETURNS / EXCHANGE</li>
-                    <li>TACTICAL SIZING</li>
+                    <li>SIZING</li>
                     <li>CONTACT HQ</li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>COMMUNITY</h4>
                 <ul>
-                    <li><a href=""INSTAGRAM</li>
-                    <li>DISCORD SERVER</li>
+                    <li><a href="">INSTAGRAM</li>
+                    <li><a href="https://discord.gg/2qJDz2Yjb5">DISCORD</a></li>
                 </ul>
             </div>
         </div>
         <div class="copyright">
-            &copy; 2024 APPA STYLE // ALL RIGHTS RESERVED // ENCRYPTED CONNECTION
+            &copy; 2026 Ouirise // ALL RIGHTS RESERVED // ENCRYPTED CONNECTION
         </div>
     </footer>
 
