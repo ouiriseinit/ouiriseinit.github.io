@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do It Right Home Repair, LLC | Concord, NC Contractor</title>
+    <meta name="description" content="Professional home repair services in Concord, NC. 5-star rated contractor specializing in quality home improvements and repairs.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1e3a8a; /* Navy Blue */
+            --secondary: #f59e0b; /* Safety Orange/Gold */
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --bg-light: #f3f4f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s, background 0.2s;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.9)), 
+                        url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .rating-badge {
+            background: rgba(255,255,255,0.1);
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stars { color: #fbbf24; margin-right: 8px; }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Business Info Section */
+        .info-section {
+            padding: 80px 0;
+        }
+
+        .info-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .info-box {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .details-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .details-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .details-list i {
+            width: 30px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 10px;
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .day { font-weight: 600; }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* Call Button Mobile */
+        .mobile-call {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #22c55e;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 2000;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-call { display: block; }
+            .hero-title { font-size: 2.2rem; }
+            .nav-content { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo">DO IT RIGHT HOME REPAIR</a>
+            <div style="font-weight: 600; color: var(--text-dark);">
+                📍 Concord, NC
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="rating-badge">
+                <span class="stars">★★★★★</span>
+                <span>5.0 Rating on Google</span>
+            </div>
+            <h1 class="hero-title">Expert Home Repairs Done Right The First Time.</h1>
+            <p class="hero-subtitle">Your local Concord contractor for high-quality maintenance, repairs, and home improvements. Professional service with a 5-star reputation.</p>
+            <a href="tel:+10000000000" class="btn">Click to Call for an Estimate</a>
+        </div>
+    </header>
+
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Top-rated contractor services for homeowners in North Carolina.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>General Repairs</h3>
+                    <p>From fixing leaks to patching drywall, we handle the small tasks that keep your home running smoothly.</p>
+                </div>
+                <div class="card">
+                    <h3>Home Maintenance</h3>
+                    <p>Regular upkeep to protect your investment and prevent costly repairs down the road.</p>
+                </div>
+                <div class="card">
+                    <h3>Improvements</h3>
+                    <p>Quality craftsmanship for your home projects, ensuring every detail is "Done Right."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="container">
+            <div class="info-flex">
+                <div class="info-box">
+                    <h2>Visit or Contact Us</h2>
+                    <p>We are conveniently located in Concord, NC, serving the surrounding area with expert contracting services.</p>
+                    <ul class="details-list">
+                        <li><i>📍</i> 315 Collingswood Dr NW, Concord, NC 28027</li>
+                        <li><i>⭐</i> 5.0 Star Professional Contractor</li>
+                        <li><i>✅</i> Licensed & Insured</li>
+                    </ul>
+                    <a href="https://www.google.com/maps/search/?api=1&query=315+Collingswood+Dr+NW+Concord+NC" target="_blank" class="btn" style="background: var(--primary); margin-top: 20px;">Get Directions</a>
+                </div>
+                <div class="info-box">
+                    <h2>Business Hours</h2>
+                    <div class="hours-grid">
+                        <div class="day">Monday</div><div>9:00 AM – 5:00 PM</div>
+                        <div class="day">Tuesday</div><div>9:00 AM – 5:00 PM</div>
+                        <div class="day">Wednesday</div><div>9:00 AM – 5:00 PM</div>
+                        <div class="day">Thursday</div><div>9:00 AM – 5:00 PM</div>
+                        <div class="day">Friday</div><div>9:00 AM – 5:00 PM</div>
+                        <div class="day">Saturday</div><div style="color: #ef4444;">Closed</div>
+                        <div class="day">Sunday</div><div style="color: #ef4444;">Closed</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Do It Right Home Repair, LLC. All Rights Reserved.</p>
+            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Concord, NC Contractor | 315 Collingswood Dr NW</p>
+        </div>
+    </footer>
+
+    <!-- Floating Mobile Call Button -->
+    <a href="tel:+10000000000" class="mobile-call">📞 Call Now</a>
+
+    <script>
+        // Update year automatically
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Simple smooth scroll logic
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

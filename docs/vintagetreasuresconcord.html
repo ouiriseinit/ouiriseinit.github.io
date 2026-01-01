@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vintage Treasures of Concord | 5-Star Antique Store | Concord, NC</title>
+    <meta name="description" content="Discover unique antiques and timeless collectibles at Vintage Treasures of Concord. 5.0 Rated. Located at 840 Florence St NW.">
+    
+    <!-- Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;700&family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --vintage-gold: #b5894b;
+            --deep-wood: #2c241e;
+            --cream: #fdfaf5;
+            --paper: #f4eee1;
+            --text: #3a342f;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--cream);
+            overflow-x: hidden; /* Prevent horizontal bounce */
+        }
+
+        h1, h2, h3 { font-family: 'Crimson Pro', serif; }
+
+        .container { 
+            width: 100%;
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+
+        /* Status Header - Mobile Optimized */
+        .status-header {
+            background: var(--deep-wood);
+            color: var(--paper);
+            text-align: center;
+            padding: 10px 15px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            text-transform: uppercase;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Navigation - Flex Wrap for Mobile */
+        nav {
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(44, 36, 30, 0.1);
+        }
+
+        @media (min-width: 768px) {
+            nav { flex-direction: row; justify-content: space-between; padding: 30px 0; }
+        }
+
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--deep-wood); 
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--text); 
+            margin: 0 10px; 
+            font-weight: 600; 
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        /* Hero Section - Responsive Sizing */
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(rgba(253, 250, 245, 0.8), rgba(253, 250, 245, 0.8)),
+                        url('https://images.unsplash.com/photo-1531685222003-f9ae81731d4d?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+        }
+
+        @media (min-width: 768px) { .hero { padding: 100px 0; } }
+
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--white);
+            padding: 8px 16px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            border: 1px solid var(--vintage-gold);
+            font-size: 0.8rem;
+        }
+
+        .hero h1 { 
+            /* Fluid font size: scales between 2.5rem and 4.5rem based on screen width */
+            font-size: clamp(2.5rem, 8vw, 4.5rem); 
+            color: var(--deep-wood); 
+            margin-bottom: 15px; 
+            line-height: 1.1; 
+        }
+
+        .hero p { 
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            max-width: 600px; 
+            margin: 0 auto 30px; 
+            color: #555;
+            padding: 0 10px;
+        }
+
+        .cta-btn {
+            background: var(--deep-wood);
+            color: var(--white);
+            padding: 16px 32px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            display: inline-block;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            width: 100%; /* Full width on mobile */
+            max-width: 320px;
+        }
+
+        /* Discovery Grid - Mobile 1 Column, Desktop 3 Column */
+        .discovery { padding: 60px 0; background: var(--white); }
+        .section-title { text-align: center; margin-bottom: 40px; padding: 0 20px; }
+        .section-title h2 { font-size: clamp(2rem, 5vw, 3rem); color: var(--deep-wood); }
+
+        .grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 20px; 
+        }
+
+        @media (min-width: 768px) {
+            .grid { grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        }
+
+        .category-card {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            background-color: var(--deep-wood);
+            border-radius: 4px;
+        }
+
+        .category-card img {
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.7;
+        }
+
+        .category-info {
+            position: absolute; bottom: 20px; left: 20px; color: var(--white);
+        }
+
+        /* Reviews - Better Spacing for Small Screens */
+        .reviews { padding: 60px 0; background: var(--paper); text-align: center; }
+        .review-text { 
+            font-size: clamp(1.2rem, 4vw, 1.8rem); 
+            font-style: italic; 
+            color: var(--deep-wood); 
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        /* Visit Section - Stacks on Mobile */
+        .visit { 
+            padding: 60px 0; 
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        @media (min-width: 992px) {
+            .visit { flex-direction: row; align-items: flex-start; }
+            .details { flex: 1; }
+            .map-container { flex: 1; }
+        }
+
+        .map-frame { 
+            width: 100%;
+            height: 350px; 
+            border: 5px solid var(--white); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .details ul { list-style: none; margin-top: 20px; }
+        .details li { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.9rem;
+        }
+
+        /* Newsletter - Responsive Form */
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 576px) {
+            .newsletter-form { flex-direction: row; gap: 0; }
+            .newsletter-form input { flex: 1; border-radius: 4px 0 0 4px; }
+            .newsletter-form button { width: auto; border-radius: 0 4px 4px 0; }
+        }
+
+        .newsletter-form input {
+            padding: 15px;
+            border: 1px solid #ddd;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 15px 25px;
+            background: var(--vintage-gold);
+            color: white;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        footer { 
+            background: var(--deep-wood); 
+            color: var(--paper); 
+            padding: 60px 20px 30px; 
+            text-align: center; 
+        }
+
+        /* Utilities */
+        .mb-20 { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="status-header" id="status-display">
+        Checking Hours...
+    </div>
+
+    <div class="container">
+        <nav>
+            <a href="#" class="logo">VINTAGE TREASURES</a>
+            <div class="nav-links">
+                <a href="#collection">Collection</a>
+                <a href="#visit">Location</a>
+            </div>
+        </nav>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="trust-badge">
+                <span style="color:var(--vintage-gold)">★★★★★</span>&nbsp;<strong>5.0 RATING</strong>
+            </div>
+            <h1>Timeless Pieces. <br>New Stories.</h1>
+            <p>Concord's premier destination for curated antiques and rare mid-century finds.</p>
+            <a href="https://www.google.com/maps?q=840+Florence+St+NW,Concord,NC+28027" target="_blank" class="cta-btn">Get Directions</a>
+        </div>
+    </section>
+
+    <section class="discovery" id="collection">
+        <div class="container">
+            <div class="section-title">
+                <p style="color:var(--vintage-gold); font-weight:600; text-transform:uppercase; letter-spacing:2px; font-size:0.7rem; margin-bottom:10px;">The Hunt Begins</p>
+                <h2>Featured Collections</h2>
+            </div>
+            <div class="grid">
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1581447100595-3a8175b05830?auto=format&fit=crop&w=600" alt="Furniture">
+                    <div class="category-info"><h3>Estate Furniture</h3></div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=600" alt="Decor">
+                    <div class="category-info"><h3>Mid-Century Decor</h3></div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1543248939-ff40856f65d4?auto=format&fit=crop&w=600" alt="Rare">
+                    <div class="category-info"><h3>Rare Curiosities</h3></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <div class="container">
+            <p class="review-text">"The absolute best antique store in NC. Impeccable curation and 5-star service every time."</p>
+            <p><strong>— Local Collector</strong> (Google Review)</p>
+        </div>
+    </section>
+
+    <section class="container visit" id="visit">
+        <div class="details">
+            <p style="color: var(--vintage-gold); font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">Visit our showroom</p>
+            <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Hours & Location</h2>
+            <p>840 Florence St NW, Concord, NC 28027</p>
+            
+            <ul>
+                <li><span style="font-weight:600">Monday</span> <span>Closed</span></li>
+                <li><span style="font-weight:600">Tue - Sat</span> <span>10:00 AM – 6:00 PM</span></li>
+                <li><span style="font-weight:600">Sunday</span> <span>12:00 PM – 5:00 PM</span></li>
+            </ul>
+            <div style="margin-top: 30px;">
+                <a href="https://www.google.com/maps?q=840+Florence+St+NW,Concord,NC+28027" target="_blank" class="cta-btn">Open Map</a>
+            </div>
+        </div>
+        <div class="map-container">
+            <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3251.246479007357!2d-80.5954!3d35.4172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88540f8e99999999%3A0xdeadbeef!2s840%20Florence%20St%20NW%2C%20Concord%2C%20NC%2028027!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section style="padding: 80px 20px; background: var(--paper); text-align: center;">
+        <h2 style="margin-bottom: 10px;">Join the Treasure List</h2>
+        <p style="margin-bottom: 25px;">Get notified when we receive new estate arrivals.</p>
+        <form class="newsletter-form" onsubmit="alert('Welcome to the hunt!'); return false;">
+            <input type="email" placeholder="Your Email" required>
+            <button type="submit">SUBSCRIBE</button>
+        </form>
+    </section>
+
+    <footer>
+        <p style="font-family: 'Crimson Pro', serif; font-size: 1.2rem; margin-bottom: 5px;">Vintage Treasures of Concord</p>
+        <p style="font-size: 0.7rem; opacity: 0.6;">&copy; 2025 | 840 Florence St NW, Concord, NC</p>
+    </footer>
+
+    <script>
+        function checkStatus() {
+            const now = new Date();
+            const day = now.getDay(); 
+            const hour = now.getHours();
+            const display = document.getElementById('status-display');
+            
+            let statusHTML = "";
+
+            if (day === 1) { // Monday
+                statusHTML = "○ Closed Today - Opens Tuesday 10 AM";
+            } else if (day === 0) { // Sunday
+                if (hour >= 12 && hour < 17) {
+                    statusHTML = "● <span style='color:#4CAF50'>Open Now until 5:00 PM</span>";
+                } else {
+                    statusHTML = "○ Closed - Opens Monday (Closed) / Tuesday 10 AM";
+                }
+            } else { // Tue - Sat
+                if (hour >= 10 && hour < 18) {
+                    statusHTML = "● <span style='color:#4CAF50'>Open Now until 6:00 PM</span>";
+                } else {
+                    statusHTML = "○ Closed - Opens Tomorrow 10 AM";
+                }
+            }
+            display.innerHTML = statusHTML;
+        }
+        checkStatus();
+    </script>
+</body>
+</html>
