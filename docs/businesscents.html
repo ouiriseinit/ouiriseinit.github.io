@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Cents LLC | Professional Accounting in Concord, NC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .hero-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%); }
+        .section-padding { padding-top: 80px; padding-bottom: 80px; }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-blue-900 tracking-tight italic">Business <span class="text-teal-600">Cents</span> LLC</span>
+                </div>
+                
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex space-x-8 items-center font-medium">
+                    <a href="#home" class="hover:text-teal-600 transition">Home</a>
+                    <a href="#services" class="hover:text-teal-600 transition">Services</a>
+                    <a href="#about" class="hover:text-teal-600 transition">About</a>
+                    <a href="#reviews" class="hover:text-teal-600 transition">Reviews</a>
+                    <a href="#contact" class="bg-blue-900 text-white px-5 py-2 rounded-full hover:bg-teal-700 transition">Contact Us</a>
+                </div>
+
+                <!-- Mobile Toggle -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-slate-600 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-2">
+            <a href="#home" class="block py-2 text-slate-600">Home</a>
+            <a href="#services" class="block py-2 text-slate-600">Services</a>
+            <a href="#about" class="block py-2 text-slate-600">About</a>
+            <a href="#reviews" class="block py-2 text-slate-600">Reviews</a>
+            <a href="#contact" class="block py-2 font-bold text-blue-900">Call (704) 706-8161</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+            <div class="text-white space-y-6">
+                <div class="inline-block bg-teal-500/20 text-teal-300 px-4 py-1 rounded-full text-sm font-semibold uppercase tracking-wider">
+                    Concord's 5-Star Rated Accountant
+                </div>
+                <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+                    Making <span class="text-teal-300">Sense</span> of Your <span class="text-teal-300">Business.</span>
+                </h1>
+                <p class="text-lg text-blue-100 max-w-lg">
+                    Professional tax preparation and bookkeeping with a digital-first approach. We simplify your finances so you can focus on your growth.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="bg-white text-blue-900 px-8 py-4 rounded-xl font-bold text-center hover:bg-slate-100 transition shadow-lg">Schedule Consultation</a>
+                    <!-- <a href="#" class="bg-blue-800/40 border border-blue-400/30 text-white px-8 py-4 rounded-xl font-bold text-center hover:bg-blue-800/60 transition backdrop-blur-sm">Client Portal Login</a> -->
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <div class="bg-white/10 p-8 rounded-3xl backdrop-blur-md border border-white/20">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-xl">
+                            <div class="bg-teal-100 p-3 rounded-full text-teal-600"><i class="fa-solid fa-bolt"></i></div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-bold uppercase">Quick Filing</p>
+                                <p class="text-slate-800 font-semibold">5-Minute Digital Organizer</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-xl ml-8">
+                            <div class="bg-blue-100 p-3 rounded-full text-blue-600"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-bold uppercase">Safe & Secure</p>
+                                <p class="text-slate-800 font-semibold">Bank-Level Encryption</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-xl ml-4">
+                            <div class="bg-amber-100 p-3 rounded-full text-amber-600"><i class="fa-solid fa-star"></i></div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-bold uppercase">Reviews</p>
+                                <p class="text-slate-800 font-semibold">4.8 Rating on Google</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Badges Section -->
+    <div class="bg-white py-8 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-8 md:gap-16 opacity-70">
+            <span class="flex items-center gap-2 font-semibold"><i class="fa-solid fa-venus text-pink-500"></i> Women Owned</span>
+            <span class="flex items-center gap-2 font-semibold"><i class="fa-solid fa-earth-americas text-emerald-600"></i> Latino Owned</span>
+            <span class="flex items-center gap-2 font-semibold"><i class="fa-solid fa-rainbow text-purple-500"></i> LGBTQ+ Friendly</span>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-blue-900 mb-4">Our Services</h2>
+                <div class="h-1 w-20 bg-teal-500 mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Tax Preparation</h3>
+                    <p class="text-slate-600 leading-relaxed">Efficient filing for individuals and small businesses. We maximize your deductions and ensure accuracy.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover">
+                    <div class="w-14 h-14 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-book"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Bookkeeping</h3>
+                    <p class="text-slate-600 leading-relaxed">Stay organized year-round with our comprehensive bookkeeping. We make your monthly financials painless.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 card-hover">
+                    <div class="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Consulting</h3>
+                    <p class="text-slate-600 leading-relaxed">Strategic planning for your business growth. We help you understand the numbers behind your success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="about" class="section-padding bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800" alt="Office Work" class="rounded-3xl shadow-2xl">
+            </div>
+            <div class="space-y-6">
+                <h2 class="text-4xl font-bold leading-tight">Professionalism Meets <br><span class="text-teal-400">Modern Efficiency</span></h2>
+                <p class="text-slate-400 text-lg">
+                    Sherry and the team at Business Cents LLC believe that accounting shouldn't be a headache. We combine years of expertise with the latest software to provide a seamless experience.
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-teal-400"></i>
+                        <span>Secure Digital document uploads</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-teal-400"></i>
+                        <span>Clear, transparent communication</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-teal-400"></i>
+                        <span>Fast turnaround on tax filings</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="reviews" class="section-padding">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-blue-900 mb-2">What Our Clients Say</h2>
+                <div class="flex justify-center text-amber-400 text-lg mb-4">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                    <span class="ml-2 text-slate-600 text-sm font-bold">4.8 (24 Reviews)</span>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm italic border-l-4 border-teal-500">
+                    "Very impressed with the professionalism and the software that Sherry uses. It took me about 5 mins to put my info into the organizer she sent us. So convenient."
+                    <div class="mt-4 font-bold text-slate-800 not-italic text-sm">- Leigh Long</div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm italic border-l-4 border-teal-500">
+                    "Highly recommend. I file my taxes here every year without any issues. Refund gets deposited in a timely manner. I wouldn’t go anywhere else."
+                    <div class="mt-4 font-bold text-slate-800 not-italic text-sm">- Christian Salazar</div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm italic border-l-4 border-teal-500">
+                    "Sherry is great. She knows her stuff and never complains if I ask help with a form or am not as prepared as I thought I was!"
+                    <div class="mt-4 font-bold text-slate-800 not-italic text-sm">- Tonda Childers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-blue-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden grid md:grid-cols-5">
+                <div class="md:col-span-2 bg-blue-900 p-10 text-white">
+                    <h3 class="text-2xl font-bold mb-8">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-location-dot mt-1 text-teal-400"></i>
+                            <p>191 Troxler Cir NW<br>Concord, NC 28027<br><span class="text-xs text-blue-300 italic">(Inside H&H Towing)</span></p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-phone text-teal-400"></i>
+                            <p>(704) 706-8161</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-clock text-teal-400"></i>
+                            <p>Closed · Opens 11 AM Thu</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="md:col-span-3 p-10">
+                    <form id="contactForm" class="grid grid-cols-1 gap-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Name</label>
+                                <input type="text" class="w-full bg-slate-50 border border-slate-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Email</label>
+                                <input type="email" class="w-full bg-slate-50 border border-slate-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Message</label>
+                            <textarea rows="4" class="w-full bg-slate-50 border border-slate-200 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-900 text-white font-bold py-4 rounded-lg hover:bg-teal-600 transition shadow-lg">Send Message</button>
+                    </form>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-500 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xl font-bold text-white mb-4">Business Cents LLC</p>
+            <div class="flex justify-center gap-6 mb-8 text-xl">
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-google"></i></a>
+            </div>
+            <p class="text-sm">© 2025 Developed by Ouirise Initiative All rights reserved. | Concord, NC Accountant</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close menu when clicking links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Handle Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for reaching out! Sherry will get back to you shortly.');
+            this.reset();
+        });
+
+        // Simple Scroll Animation (Sticky Nav shadow)
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
