@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ouirise Initiative | Fast Mobile-First Websites</title>
+    <title>Ouirise Initiative | Engineering Business Growth</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -25,12 +25,14 @@
             overflow-x: hidden;
         }
 
+        /* Layout Constraints */
         header, main, footer {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
 
+        /* Sticky Modern Header */
         header {
             position: sticky;
             top: 0;
@@ -44,10 +46,22 @@
             height: 80px;
             margin-bottom: 2rem;
         }
-        header img { max-width: 20%; max-height: 100%; }
-        h1 { font-size: 1.5rem; letter-spacing: -1px; margin: 0; text-transform: lowercase; }
-        h1 span { color: var(--accent-blue); }
+        header img {
+            max-width: 20%;
+            max-height: 100%;
+        }
+        h1 {
+            font-size: 1.5rem;
+            letter-spacing: -1px;
+            margin: 0;
+            text-transform: lowercase;
+        }
 
+        h1 span {
+            color: var(--accent-blue);
+        }
+
+        /* Buttons & Links */
         .btn-contact {
             padding: 0.8rem 1.5rem;
             background: transparent;
@@ -58,9 +72,18 @@
             font-weight: 500;
             transition: var(--transition);
         }
-        .btn-contact:hover { background: var(--border-red); transform: translateY(-2px); }
 
-        .hero { padding: 4rem 0; border-bottom: 1px solid #222; }
+        .btn-contact:hover {
+            background: var(--border-red);
+            transform: translateY(-2px);
+        }
+
+        /* Hero / Introduction */
+        .hero {
+            padding: 4rem 0;
+            border-bottom: 1px solid #222;
+        }
+
         .hero h2 {
             font-size: clamp(2rem, 5vw, 3.5rem);
             line-height: 1.1;
@@ -70,6 +93,7 @@
             -webkit-text-fill-color: transparent;
         }
 
+        /* Portfolio Grid */
         .portfolio-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -101,8 +125,13 @@
             opacity: 0;
             transition: var(--transition);
         }
-        .portfolio-link:hover i { opacity: 1; transform: translateX(5px); }
 
+        .portfolio-link:hover i {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        /* Project Plans Section */
         .plans-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -119,11 +148,34 @@
             flex-direction: column;
             transition: var(--transition);
         }
-        .card.plan:hover { border-color: var(--border-red); }
-        .card.plan h3 { color: var(--accent-blue); font-size: 1.5rem; margin-top: 0; }
-        .card.plan p { font-size: 0.95rem; color: #ccc; flex-grow: 1; }
-        .card.plan .badge { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--border-red); font-weight: bold; margin-bottom: 0.5rem; display: block; }
 
+        .card.plan:hover {
+            border-color: var(--border-red);
+        }
+
+        .card.plan h3 {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        .card.plan p {
+            font-size: 0.95rem;
+            color: #ccc;
+            flex-grow: 1;
+        }
+
+        .card.plan .badge {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--border-red);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Form Styling */
         #contact-form {
             position: fixed;
             top: 100px;
@@ -136,119 +188,191 @@
             z-index: 1001;
             width: 300px;
         }
+
         .hidden { display: none; }
 
-        input, textarea { width: 100%; padding: 0.8rem; margin-bottom: 1rem; background: #111; border: 1px solid #333; color: white; border-radius: 4px; }
-        input:focus, textarea:focus { border-color: var(--accent-blue); outline: none; }
+        input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            background: #111;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 4px;
+        }
 
-        @media (max-width: 768px) { header { height: auto; padding: 1rem; gap: 1rem; } .hero h2 { font-size: 2.5rem; } }
+        input:focus {
+            border-color: var(--accent-blue);
+            outline: none;
+        }
+
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header { height: auto; padding: 1rem;  gap: 1rem; }
+            .hero h2 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body class="dark">
 
-<header>
-    <img src="./images/ouirise-logo.png">
-    <div>
-        <i class="fab fa-github" style="margin-left: 1rem;"></i>
-        <i class="fab fa-instagram" style="margin-left: 1rem"></i>
+    <header>
+        <img src="./images/ouirise-logo.png">
+        <div>
+                <i class="fab fa-github" style="margin-left: 1rem;"></i>
+                <i class="fab fa-instagram" style="margin-left: 1rem"></i>
+            </div>
+        <!-- <button class="btn-contact" onclick="showContact()">Contact Project Lead</button> -->
+    </header>
+
+    <div id="contact-form" class="hidden">
+        <h3 style="margin-top:0">Get in Touch</h3>
+        <form action="#">
+            <input placeholder="Name" type="text" required />
+            <input placeholder="Email" type="email" required />
+            <textarea placeholder="Tell us about your project" style="width:100%; height:100px; background:#111; border:1px solid #333; color:white; margin-bottom:1rem; border-radius:4px; padding:0.8rem; font-family:inherit;"></textarea>
+            <input type="submit" value="Send Request" style="background:var(--accent-blue); border:none; cursor:pointer; font-weight:bold" />
+            <button type="button" onclick="showContact()" style="background:none; border:none; color:#888; width:100%; cursor:pointer">Close</button>
+        </form>
     </div>
-</header>
 
-<div id="contact-form" class="hidden">
-    <h3 style="margin-top:0">Get in Touch</h3>
-    <form action="#">
-        <input placeholder="Name" type="text" required />
-        <input placeholder="Email" type="email" required />
-        <textarea placeholder="Tell us about your project"></textarea>
-        <input type="submit" value="Send Request" style="background:var(--accent-blue); border:none; cursor:pointer; font-weight:bold" />
-        <button type="button" onclick="showContact()" style="background:none; border:none; color:#888; width:100%; cursor:pointer">Close</button>
-    </form>
-</div>
+    <main>
+        <section class="hero">
+            <h2>Ouirise Initiative <br>Launch and Scale Your Business</h2>
+            <p style="font-size: 1.25rem; color: #aaa; max-width: 800px;">
+                We bridge the gap between startup vision and enterprise-grade reality. 
+                Using agentic workflows and modern cloud architecture, we develop the tools innovators need to lead.
+            </p>
+        </section>
 
-<main>
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <h2>Fast, Mobile-First Websites <br>Live in 48 Hours</h2>
-        <p style="font-size: 1.25rem; color: #aaa; max-width: 800px;">
-            Clean, SEO-ready, single-page business websites for shops, studios, and small businesses.  
-            50% upfront, 50% on delivery. No subscriptions. No tech headaches.
-        </p>
-        <button class="btn-contact" onclick="showContact()">Get Your Site Live</button>
-    </section>
+        <section style="padding: 4rem 0;">
+            <h3>Our Software Engineers</h3>
+            <h4 style="color: var(--accent-blue);">Over 8 Years of Developing Custom Solutions</h4>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div>
+                    <p>Developed React, Angular, HTML, CSS, and Wordpress applications for industry innovators in FinTech, Entrepreneurship, and Startups.</p>
+                    <p>Incorporate modern cloud practices for data security and analytics. Use agentic workflows for smooth deployment timelines.</p>
+                </div>
+                <div>
+                    
+                    <p>Well versed in building custom interfaces and dashboards for a wide variety of industries.</p>
+                    <!-- <p>  in Hackathons and tutored while developing solutions for business students during the foundational year at HPU.</p> -->
+                    <p>Use leading AI research and automation methodologies to boost organizational workflows.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h3>Recent Deployments</h3>
+            
+            <div class="portfolio-container">
+                <a href="./xavieraustingroup.html" class="portfolio-link">
+                    <span>Xavier Austin Group LLC</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="./maleekmusic.html" class="portfolio-link">
+                    <span>Maleek Music</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="./ourstyle.html" class="portfolio-link">
+                    <span>Our Style Apparel</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                
+                <a href="./businesscents.html" class="portfolio-link">
+                    <span>Business Cents LLC</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                
+                <a href="https://ouiriseinit.github.io/thejugobar/" class="portfolio-link">
+                    <span>theJugoBar</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="https://ouiriseinit.github.io/culturalgold/" class="portfolio-link">
+                    <span>Cultural Gold</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                </a>
+                <!-- <a href="./universalsolutions.html" class="portfolio-link">
+                    <span>Universal Solutions Construction</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a> -->
+                <!-- <a href="./borisandnatasha.html" class="portfolio-link">
+                    <span>Boris & Natasha</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a> -->
+                <a href="./homeserviceexprts.html" class="portfolio-link">
+                    <span>Home Service Experts</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="https://ouiriseinit.github.io/miyu/" class="portfolio-link">
+                    <span>E-commerce Template</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                
+                <!-- <a href="./" class="portfolio-link">
+                    <span></span>
+                    <i class="fas fa-arrow-right"></i>
+                </a> -->
+            </div>
+        </section>
 
-    <!-- PORTFOLIO SECTION -->
-    <section>
-        <h3>Recent Deployments</h3>
-        <div class="portfolio-container">
-            <a href="./maleekmusic.html" class="portfolio-link"><span>Maleek Music</span><i class="fas fa-arrow-right"></i></a>
-            <a href="./businesscents.html" class="portfolio-link"><span>Business Cents LLC</span><i class="fas fa-arrow-right"></i></a>
-            <a href="./xavieraustingroup.html" class="portfolio-link"><span>Xavier Austin Group LLC</span><i class="fas fa-arrow-right"></i></a>
-            <a href="https://ouiriseinit.github.io/thejugobar/" class="portfolio-link"><span>theJugoBar</span><i class="fas fa-arrow-right"></i></a>
-            <a href="https://ouiriseinit.github.io/culturalgold/" class="portfolio-link"><span>Cultural Gold</span><i class="fas fa-arrow-right"></i></a>
-            <a href="./ourstyle.html" class="portfolio-link"><span>Our Style Apparel</span><i class="fas fa-arrow-right"></i></a>
-            <!-- <a href="./borisandnatasha.html" class="portfolio-link"><span>Boris & Natasha</span><i class="fas fa-arrow-right"></i></a> -->
-            <a href="./homeserviceexprts.html" class="portfolio-link"><span>Home Service Experts</span><i class="fas fa-arrow-right"></i></a>
-             <a href="https://ouiriseinit.github.io/miyu/" class="portfolio-link"><span>E-commerce Template</span><i class="fas fa-arrow-right"></i></a>
+        <section style="padding: 4rem 0;">
+            <h2 style="text-align: center;">Project Plans</h2>
+            <p style="text-align: center; color: #888; margin-bottom: 3rem;">Engineered for scalability, drafted for success.</p>
+            
+            <div class="plans-grid">
+                <!-- SPA Plan -->
+                <div class="card plan">
+                    <span class="badge">Prototype</span>
+                    <h3>Single Page Application</h3>
+                    <p>The SPA Plan is built to draft ideas and to assist clients seeking cost-effective solutions without compromising quality. Perfect for landing pages and high-impact marketing assets.</p>
+                    <ul style="list-size: none; padding: 0; font-size: 0.85rem; color: #888;">
+                        <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> Modern Cloud Deployment</li>
+                        <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> Responsive Design</li>
+                        <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> Speed Optimized</li>
+                    </ul>
+                </div>
+
+                <!-- MVP Plan -->
+                <div class="card plan" style="border-color: var(--accent-blue);">
+                    <span class="badge" style="color: var(--accent-blue);">Most Popular</span>
+                    <h3>The MVP Solution</h3>
+                    <p>Expert software engineers scale your business with an interactive cloud solution. A balanced approach between availability and flexibility, suitable for projects requiring consistent evolution.</p>
+                    <ul style="list-size: none; padding: 0; font-size: 0.85rem; color: #888;">
+                        <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> Custom Database Integration</li>
+                        <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> Server Management Included</li>
+                        <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> Interactive Dashboards</li>
+                    </ul>
+                </div>
+
+                <!-- Big Data Plan -->
+                <div class="card plan">
+                    <span class="badge">Enterprise</span>
+                    <h3>Big Data & AI</h3>
+                    <p>Tailored for comprehensive support and prioritized attention. We build custom dashboards and AI agentic solutions to improve workflow productivity and data-driven decision making.</p>
+                    <ul style="list-size: none; padding: 0; font-size: 0.85rem; color: #888;">
+                        <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> AI Agent Workflows</li>
+                        <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> Full-time Engineering Focus</li>
+                        <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> Custom Analytics Suites</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="border-top: 1px solid #222; padding: 4rem 0; margin-top: 4rem;">
+        <div style="display: flex; justify-content: center; align-items: center; opacity: 0.6;">
+            <p>&copy; 2025 Ouirise Initiative.</p>
+            
         </div>
-    </section>
+    </footer>
 
-    <!-- PROJECT PLANS SECTION -->
-    <section style="padding: 4rem 0;">
-        <h2 style="text-align: center;">Fast Website Plans</h2>
-        <p style="text-align: center; color: #888; margin-bottom: 3rem;">
-            Simple, mobile-first, 48-hour deployments engineered for small businesses.
-        </p>
-
-        <div class="plans-grid">
-            <!-- SPA Plan -->
-            <div class="card plan">
-                <span class="badge">Prototype</span>
-                <h3>Single Page Website</h3>
-                <p>Perfect for landing pages, marketing promotions, and small shops. Clean, responsive, and delivered in 48 hours.</p>
-                <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: #888;">
-                    <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> Mobile-First Design</li>
-                    <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> SEO Optimized</li>
-                    <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> 48-Hour Delivery</li>
-                </ul>
-            </div>
-
-            <!-- MVP Plan -->
-            <div class="card plan" style="border-color: var(--accent-blue);">
-                <span class="badge" style="color: var(--accent-blue);">Most Popular</span>
-                <h3>Small Business Site</h3>
-                <p>Interactive multi-section website suitable for shops and studios. Fully responsive, fast, and delivered in 48 hours.</p>
-                <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: #888;">
-                    <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> Custom Content Sections</li>
-                    <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> Google Maps & Contact Integration</li>
-                    <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> 48-Hour Delivery</li>
-                </ul>
-            </div>
-
-            <!-- Big Data Plan -->
-            <div class="card plan">
-                <span class="badge">Enterprise</span>
-                <h3>Shop + Lead Ready</h3>
-                <p>Comprehensive solutions for businesses needing product displays or service listings. Delivered fast, mobile-first, and functional.</p>
-                <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: #888;">
-                    <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> Product/Service Listings</li>
-                    <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> Contact & Lead Capture</li>
-                    <li><i class="fas fa-check" style="color:var(--accent-blue)"></i> 48-Hour Delivery</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer style="border-top: 1px solid #222; padding: 4rem 0; margin-top: 4rem;">
-    <div style="display: flex; justify-content: center; align-items: center; opacity: 0.6;">
-        <p>&copy; 2026 Ouirise Initiative.</p>
-    </div>
-</footer>
-
-<script>
-    const showContact = () => {
-        document.getElementById('contact-form').classList.toggle('hidden')
-    }
-</script>
+    <script>
+        const showContact = () => {
+            document.getElementById('contact-form').classList.toggle('hidden')
+        }
+    </script>
 </body>
 </html>
