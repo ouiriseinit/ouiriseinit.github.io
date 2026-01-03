@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@modelcontextprotocol/server-filesystem": "^2025.12.18",
     "@supabase/supabase-js": "^2.89.0",
     "mongoose": "^9.1.0",
     "next": "latest",

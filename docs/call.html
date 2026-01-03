@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Outbound Call Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --dark:#0a0a0a;
+  --mid:#151515;
+  --border:#2a2a2a;
+  --accent:#800000;
+  --accent-bright:#a50000;
+  --text:#ffffff;
+  --muted:#9a9a9a;
+  --green:#1f7a3f;
+  --yellow:#7a6a1f;
+  --red:#7a1f1f;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  font-family:'JetBrains Mono', monospace;
+  background:var(--dark);
+  color:var(--text);
+  padding:2rem;
+}
+
+h1 {
+  font-family:'Bebas Neue', sans-serif;
+  letter-spacing:2px;
+  margin-bottom:1rem;
+}
+
+.dashboard {
+  max-width:1100px;
+  margin:auto;
+}
+
+.top-bar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:1.5rem;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+
+.search {
+  background:var(--mid);
+  border:1px solid var(--border);
+  padding:0.7rem 1rem;
+  color:white;
+  width:260px;
+}
+
+.stats {
+  font-size:0.75rem;
+  color:var(--muted);
+}
+
+.table {
+  width:100%;
+  border-collapse:collapse;
+}
+
+th, td {
+  padding:0.8rem;
+  border-bottom:1px solid var(--border);
+  vertical-align:top;
+}
+
+th {
+  font-size:0.75rem;
+  text-align:left;
+  color:var(--muted);
+}
+
+.company {
+  font-weight:700;
+}
+
+.phone a {
+  color:var(--accent);
+  text-decoration:none;
+}
+
+.phone a:hover {
+  color:var(--accent-bright);
+}
+
+.status {
+  font-size:0.7rem;
+  padding:0.3rem 0.6rem;
+  border-radius:3px;
+  cursor:pointer;
+  display:inline-block;
+}
+
+.not-called { background:#333; }
+.called { background:var(--green); }
+.no-answer { background:var(--yellow); }
+.follow-up { background:var(--red); }
+
+.notes {
+  width:100%;
+  background:var(--mid);
+  border:1px solid var(--border);
+  color:white;
+  padding:0.4rem;
+  font-size:0.75rem;
+}
+
+tr:hover {
+  background:#111;
+}
+
+@media(max-width:768px){
+  th:nth-child(4), td:nth-child(4) { display:none; }
+}
+</style>
+</head>
+
+<body>
+<div class="dashboard">
+  <h1>Outbound Call Dashboard</h1>
+
+  <div class="top-bar">
+    <input class="search" placeholder="Generated Call List..." oninput="updateInput(this.value)" />
+    <input class="search" placeholder="Search company…" oninput="filterList(this.value)" />
+    <div class="stats" id="stats" aria-live="polite"></div>
+  </div>
+
+  <table class="table" id="callTable">
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Phone</th>
+        <th>Status</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<script>
+/*
+  SUPPORTED INPUT FORMATS:
+
+  1) JSON (objects)
+  [
+    { "name": "Clean Touch Cabinets", "phone": "(704) 376-5844" }
+  ]
+
+  2) JSON (arrays)
+  [
+    ["Clean Touch Cabinets", "7043765844"]
+  ]
+
+  3) Pipe / CSV / Tab text
+  | Clean Touch Cabinets | (704) 376-5844 |
+  Kitchen Tune-Up Charlotte, NC,704-248-8847
+*/
+
+let RAW_INPUT = `
+`;
+
+
+/* ---------------- NORMALIZER ---------------- */
+
+function normalizePhone(p) {
+  return (p || "").replace(/\D/g, "").slice(-10);
+}
+
+function parseInput(input) {
+  input = input.trim();
+
+  // JSON detection
+  if (input.startsWith("[") || input.startsWith("{")) {
+    const json = JSON.parse(input);
+    return json.map(row => {
+      if (Array.isArray(row)) {
+        // JSON array: [name, phone]
+        return [row[0], normalizePhone(row[1])];
+      } else {
+        // JSON object: try multiple keys
+        const name = row.name || row.company || row.business || row.business_name || "Unknown";
+        const phone = normalizePhone(row.phone || row.phone_number || row.contact || "");
+        return [name, phone];
+      }
+    })}
+
+  // Text / CSV / Pipe / Tab
+  return input
+    .split("\n")
+    .map(line =>
+      line
+        .replace(/^\||\|$/g, "")
+        .split(/[\|,\t]/)
+        .map(v => v.trim())
+        .filter(Boolean)
+    )
+    .filter(r => r.length >= 2)
+    .map(r => [r[0], normalizePhone(r[1])]);
+}
+
+const DATA = parseInput(RAW_INPUT);
+function updateInput(value) {
+  RAW_INPUT = value.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const parsed = parseInput(RAW_INPUT);
+  DATA.length = 0;
+  parsed.forEach(r => DATA.push(r));
+  load();
+}
+
+
+/* ---------------- DASHBOARD LOGIC ---------------- */
+
+const STATUS = ["not-called","called","no-answer","follow-up"];
+const tableBody = document.querySelector("tbody");
+async function loadData() {
+  const response = await fetch('/api/calls');
+  DATA = response.json();
+  load();
+}
+function load() {
+  tableBody.innerHTML = "";
+  const saved = JSON.parse(localStorage.getItem("callStatus") || "{}");
+
+  DATA.forEach((d,i)=>{
+    const status = saved[i]?.status || "not-called";
+    const notes = saved[i]?.notes || "";
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td class="company">${d[0]}</td>
+      <td class="phone">
+        <a href="tel:${d[1]}">${format(d[1])}</a>
+      </td>
+      <td>
+        <span class="status ${status}" onclick="cycleStatus(${i}, this)">
+          ${status.replace("-"," ")}
+        </span>
+      </td>
+      <td>
+        <input class="notes" value="${notes}"
+          oninput="saveNote(${i}, this.value)" />
+      </td>
+    `;
+    tableBody.appendChild(tr);
+  });
+
+  updateStats();
+}
+
+function cycleStatus(i, el){
+  const next = STATUS[(STATUS.indexOf(el.classList[1]) + 1) % STATUS.length];
+  el.className = "status " + next;
+  el.innerText = next.replace("-"," ");
+  save(i,{status:next});
+}
+
+function saveNote(i,val){
+  save(i,{notes:val});
+}
+
+function save(i,data){
+  const all = JSON.parse(localStorage.getItem("callStatus") || "{}");
+  all[i] = {...all[i], ...data};
+  localStorage.setItem("callStatus", JSON.stringify(all));
+  updateStats();
+}
+
+function format(n){
+  return `(${n.slice(0,3)}) ${n.slice(3,6)}-${n.slice(6)}`;
+}
+
+function filterList(q){
+  q = q.toLowerCase();
+  [...tableBody.children].forEach(r=>{
+    r.style.display = r.innerText.toLowerCase().includes(q) ? "" : "none";
+  });
+}
+
+function updateStats(){
+  const all = Object.values(JSON.parse(localStorage.getItem("callStatus") || {}));
+  const called = all.filter(a=>a.status==="called").length;
+  document.getElementById("stats").innerText =
+    `${called}/${DATA.length} contacted`;
+}
+
+load();
+</script>
+</body>
+</html>
