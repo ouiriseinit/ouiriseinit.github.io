@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rainfall Animation</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-deep: #0a0e17;
+      --bg-mid: #0f1623;
+      --accent: #64b5f6;
+      --accent-glow: rgba(100, 181, 246, 0.3);
+      --text: #e0e6ed;
+      --text-dim: #6b7a8f;
+      --panel: rgba(15, 22, 35, 0.85);
+      --border: rgba(100, 181, 246, 0.15);
+    }
+
+    body {
+      background: var(--bg-deep);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    #rainCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .rain-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 50% 0%, rgba(100, 181, 246, 0.08) 0%, transparent 60%);
+    }
+
+    .rain-content {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      pointer-events: none;
+    }
+
+    .rain-content > * { pointer-events: auto; }
+
+    .rain-card {
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px 48px;
+      text-align: center;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 0 40px var(--accent-glow);
+      max-width: 420px;
+      width: 90%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .rain-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6), 0 0 60px var(--accent-glow);
+    }
+
+    .rain-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .rain-card h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .rain-card .subtitle {
+      color: var(--text-dim);
+      font-size: 14px;
+      margin-bottom: 28px;
+      letter-spacing: 0.5px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .stat-box {
+      background: rgba(100, 181, 246, 0.08);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 8px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .stat-box:hover {
+      background: rgba(100, 181, 246, 0.15);
+      border-color: rgba(100, 181, 246, 0.3);
+    }
+
+    .stat-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: rgba(100, 181, 246, 0.12);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      letter-spacing: 0.3px;
+    }
+
+    .btn:hover {
+      background: rgba(100, 181, 246, 0.25);
+      border-color: rgba(100, 181, 246, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .btn:active { transform: translateY(0); }
+
+    .btn.active {
+      background: rgba(100, 181, 246, 0.35);
+      border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .intensity-slider {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .intensity-slider label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      background: rgba(100, 181, 246, 0.15);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      background: var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--accent-glow);
+      transition: transform 0.2s;
+    }
+
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      background: var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    .lightning-flash {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.15);
+      z-index: 1;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.05s;
+    }
+
+    .lightning-flash.flash-active { opacity: 1; }
+    .lightning-flash.flash-fade { opacity: 0; transition: opacity 0.4s ease-out; }
+  </style>
+<base target="_blank">
+</head>
+<body>
+  <canvas id="rainCanvas"></canvas>
+  <div class="lightning-flash" id="lightningFlash"></div>
+  <div class="rain-overlay"></div>
+
+  <div class="rain-content">
+    <div class="rain-card">
+      <div class="rain-icon">🌧️</div>
+      <h1>Rainfall</h1>
+      <p class="subtitle">Interactive particle simulation</p>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <span class="stat-value" id="dropCount">0</span>
+          <span class="stat-label">Drops</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value" id="windVal">0</span>
+          <span class="stat-label">Wind</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value" id="fpsVal">60</span>
+          <span class="stat-label">FPS</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn active" id="btnRain" onclick="setMode('rain')">Rain</button>
+        <button class="btn" id="btnStorm" onclick="setMode('storm')">Storm</button>
+        <button class="btn" id="btnDrizzle" onclick="setMode('drizzle')">Drizzle</button>
+        <button class="btn" id="btnSnow" onclick="setMode('snow')">Snow</button>
+      </div>
+
+      <div class="intensity-slider">
+        <label><span>Intensity</span><span id="intensityLabel">50%</span></label>
+        <input type="range" id="intensitySlider" min="10" max="100" value="50">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('rainCanvas');
+    const ctx = canvas.getContext('2d');
+    const lightningEl = document.getElementById('lightningFlash');
+
+    let W, H;
+    let drops = [];
+    let splashes = [];
+    let mode = 'rain';
+    let intensity = 0.5;
+    let wind = 0;
+    let targetWind = 0;
+    let frameCount = 0;
+    let lastTime = performance.now();
+    let fps = 60;
+    let lightningTimer = 0;
+    let nextLightning = Math.random() * 300 + 200;
+
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    class Drop {
+      constructor() { this.reset(true); }
+
+      reset(randomY = false) {
+        this.x = Math.random() * (W + 400) - 200;
+        this.y = randomY ? Math.random() * H : -20;
+        this.z = Math.random() * 0.8 + 0.2;
+        this.speed = (mode === 'snow' ? 1 : (mode === 'drizzle' ? 8 : 12)) * this.z;
+        this.len = (mode === 'snow' ? 3 : (mode === 'drizzle' ? 15 : 25)) * this.z;
+        this.opacity = this.z * 0.6 + 0.2;
+        this.dead = false;
+      }
+
+      update() {
+        this.y += this.speed;
+        this.x += wind * this.z;
+        if (mode === 'snow') {
+          this.x += Math.sin(frameCount * 0.02 + this.y * 0.01) * 0.5;
+        }
+        if (this.y > H) {
+          if (mode !== 'snow' && Math.random() < 0.3) {
+            createSplash(this.x, H);
+          }
+          this.reset();
+        }
+        if (this.x < -300 || this.x > W + 300) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        if (mode === 'snow') {
+          ctx.fillStyle = '#c8e6f5';
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.len * 0.5, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          const tilt = wind * 2;
+          const grad = ctx.createLinearGradient(this.x, this.y, this.x + tilt, this.y + this.len);
+          grad.addColorStop(0, 'rgba(160, 200, 255, 0)');
+          grad.addColorStop(0.5, 'rgba(160, 200, 255, ' + this.opacity + ')');
+          grad.addColorStop(1, 'rgba(160, 200, 255, 0)');
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = this.z * 1.5;
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(this.x, this.y);
+          ctx.lineTo(this.x + tilt, this.y + this.len);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+    }
+
+    class Splash {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.vx = (Math.random() - 0.5) * 4;
+        this.vy = -Math.random() * 3 - 1;
+        this.life = 1;
+        this.decay = Math.random() * 0.03 + 0.02;
+        this.size = Math.random() * 2 + 1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += 0.15;
+        this.life -= this.decay;
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.life * 0.6;
+        ctx.fillStyle = '#a0c8ff';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function createSplash(x, y) {
+      const count = Math.floor(Math.random() * 4) + 2;
+      for (let i = 0; i < count; i++) {
+        splashes.push(new Splash(x, y));
+      }
+    }
+
+    function updateDropCount() {
+      const targetCount = Math.floor(intensity * (mode === 'storm' ? 800 : (mode === 'drizzle' ? 300 : 500)));
+      while (drops.length < targetCount) drops.push(new Drop());
+      while (drops.length > targetCount) drops.pop();
+    }
+
+    function triggerLightning() {
+      lightningEl.classList.add('flash-active');
+      lightningEl.classList.remove('flash-fade');
+      setTimeout(() => {
+        lightningEl.classList.remove('flash-active');
+        lightningEl.classList.add('flash-fade');
+      }, 80);
+      setTimeout(() => {
+        lightningEl.classList.remove('flash-fade');
+      }, 500);
+    }
+
+    function animate() {
+      const now = performance.now();
+      frameCount++;
+      if (now - lastTime >= 1000) {
+        fps = frameCount;
+        frameCount = 0;
+        lastTime = now;
+        document.getElementById('fpsVal').textContent = fps;
+      }
+
+      ctx.clearRect(0, 0, W, H);
+      wind += (targetWind - wind) * 0.02;
+
+      if (mode === 'storm') {
+        lightningTimer++;
+        if (lightningTimer > nextLightning) {
+          triggerLightning();
+          lightningTimer = 0;
+          nextLightning = Math.random() * 200 + 100;
+        }
+      }
+
+      for (const drop of drops) {
+        drop.update();
+        drop.draw();
+      }
+
+      for (let i = splashes.length - 1; i >= 0; i--) {
+        splashes[i].update();
+        splashes[i].draw();
+        if (splashes[i].life <= 0) splashes.splice(i, 1);
+      }
+
+      const groundGrad = ctx.createLinearGradient(0, H - 60, 0, H);
+      groundGrad.addColorStop(0, 'rgba(100, 181, 246, 0)');
+      groundGrad.addColorStop(1, 'rgba(100, 181, 246, 0.08)');
+      ctx.fillStyle = groundGrad;
+      ctx.fillRect(0, H - 60, W, 60);
+
+      document.getElementById('dropCount').textContent = drops.length;
+      document.getElementById('windVal').textContent = Math.abs(wind).toFixed(1);
+
+      requestAnimationFrame(animate);
+    }
+
+    function setMode(newMode) {
+      mode = newMode;
+      document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('btn' + newMode.charAt(0).toUpperCase() + newMode.slice(1)).classList.add('active');
+
+      if (mode === 'storm') targetWind = (Math.random() - 0.5) * 6;
+      else if (mode === 'drizzle') targetWind = (Math.random() - 0.5) * 1;
+      else if (mode === 'snow') targetWind = (Math.random() - 0.5) * 2;
+      else targetWind = (Math.random() - 0.5) * 3;
+
+      updateDropCount();
+    }
+
+    document.getElementById('intensitySlider').addEventListener('input', (e) => {
+      intensity = e.target.value / 100;
+      document.getElementById('intensityLabel').textContent = e.target.value + '%';
+      updateDropCount();
+    });
+
+    let mouseX = W / 2;
+    document.addEventListener('mousemove', (e) => {
+      const dx = e.clientX - mouseX;
+      targetWind += dx * 0.005;
+      targetWind = Math.max(-8, Math.min(8, targetWind));
+      mouseX = e.clientX;
+    });
+
+    updateDropCount();
+    animate();
+  </script>
+</body>
+</html>
